@@ -39,7 +39,6 @@
         "release:version": "lerna version --exact --no-changelog --no-push --no-git-tag-version",
         "semantic-release": "semantic-release",
         "start:dbs": "docker-compose -f scripts/mongo-s3-docker-compose.yml up -d",
-        "start:rest:server": "npm run start --workspace=packages/h5p-rest-example-server",
         "start": "npm run start --workspace=packages/h5p-examples",
         "stop:dbs": "docker-compose -f scripts/mongo-s3-docker-compose.yml down",
         "test:e2e:tests": "npm run test:e2e:tests --workspace=packages/h5p-examples",
@@ -126,7 +125,6 @@
         "packages/h5p-shared-state-server",
         "packages/h5p-svg-sanitizer",
         "packages/h5p-clamav-scanner",
-        "packages/h5p-examples",
-        "packages/h5p-rest-example-server"
+        "packages/h5p-examples"
     ]
 }
