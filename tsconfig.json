@@ -32,31 +32,31 @@
         "outDir": "./build-ide",
         "jsx": "react",
         "paths": {
-            "@lumieducation/h5p-examples": ["packages/h5p-examples/src"],
-            "@lumieducation/h5p-express": ["packages/h5p-express/src"],
-            "@lumieducation/h5p-html-exporter": [
+            "@LinhPhan9605/h5p-examples": ["packages/h5p-examples/src"],
+            "@LinhPhan9605/h5p-express": ["packages/h5p-express/src"],
+            "@LinhPhan9605/h5p-html-exporter": [
                 "packages/h5p-html-exporter/src"
             ],
-            "@lumieducation/h5p-mongos3": ["packages/h5p-mongos3/src"],
-            "@lumieducation/h5p-react": ["packages/h5p-react/src"],
-            "@lumieducation/h5p-rest-example-client": [
+            "@LinhPhan9605/h5p-mongos3": ["packages/h5p-mongos3/src"],
+            "@LinhPhan9605/h5p-react": ["packages/h5p-react/src"],
+            "@LinhPhan9605/h5p-rest-example-client": [
                 "packages/h5p-rest-example-client/src"
             ],
-            "@lumieducation/h5p-rest-example-server": [
+            "@LinhPhan9605/h5p-rest-example-server": [
                 "packages/h5p-rest-example-server/src"
             ],
-            "@lumieducation/h5p-webcomponents": [
+            "@LinhPhan9605/h5p-webcomponents": [
                 "packages/h5p-webcomponents/src"
             ],
-            "@lumieducation/h5p-server": ["packages/h5p-server/src"],
-            "@lumieducation/h5p-redis-lock": ["packages/h5p-redis-lock/src"],
-            "@lumieducation/h5p-shared-state-server": [
+            "@LinhPhan9605/h5p-server": ["packages/h5p-server/src"],
+            "@LinhPhan9605/h5p-redis-lock": ["packages/h5p-redis-lock/src"],
+            "@LinhPhan9605/h5p-shared-state-server": [
                 "packages/h5p-shared-state-server/src"
             ],
-            "@lumieducation/h5p-svg-sanitizer": [
+            "@LinhPhan9605/h5p-svg-sanitizer": [
                 "packages/h5p-svg-sanitizer/src"
             ],
-            "@lumieducation/h5p-clamav-scanner": [
+            "@LinhPhan9605/h5p-clamav-scanner": [
                 "packages/h5p-clamav-scanner/src"
             ]
         }

@@ -4,7 +4,7 @@ This package provides plain HTML 5 Web Components that you can use in your
 project to insert H5P players or editors without having to worry about the
 details of setting up H5P, loading scripts and styles etc. **They only work in
 conjunction with a custom H5P server (e.g. one using
-[@lumieducation/h5p-server](https://www.npmjs.com/package/@lumieducation/h5p-server))**
+[@LinhPhan9605/h5p-server](https://www.npmjs.com/package/@LinhPhan9605/h5p-server))**
 that provides endpoints that do these things:
 
 - get the required data about content (one for playing, one for editing)
@@ -12,7 +12,7 @@ that provides endpoints that do these things:
 - serve all AJAX endpoints required by the H5P core
 
 It is recommended to checkout the rest example that uses
-@lumieducation/h5p-server to see how the component can be used in an
+@LinhPhan9605/h5p-server to see how the component can be used in an
 application.
 
 If you are looking for a solution to get the H5P player working without any
@@ -43,14 +43,14 @@ browsers.
 Install the component with npm or yarn:
 
 ```sh
-$ npm install @lumieducation/h5p-webcomponents
+$ npm install @LinhPhan9605/h5p-webcomponents
 ```
 
 Then, import the component in your JavaScript code and register the h5p-player
 or h5p-editor tag globally:
 
 ```js
- import { H5PPlayerComponent, H5PEditorComponent } from '@lumieducation/h5p-webcomponents';
+ import { H5PPlayerComponent, H5PEditorComponent } from '@LinhPhan9605/h5p-webcomponents';
  window.customElements.define('h5p-player', H5PPlayerComponent);
  window.customElements.define('h5p-editor', H5PEditorComponent);
 ```
@@ -59,7 +59,7 @@ There is also a convenience function that you can use instead of importing the
 components manually:
 
 ```js
-import { defineElements } from '@lumieducation/h5p-webcomponents';
+import { defineElements } from '@LinhPhan9605/h5p-webcomponents';
 defineElements('h5p-player'); // only registers the player component
 defineElements('h5p-editor'); // only registers the editor component
 defineElements('h5p-player', 'h5p-editor'); // registers player and editor component
@@ -147,17 +147,17 @@ You must provide these callbacks for the components to work:
 
 ```ts
 loadContentCallback = async (contentId: string) => Promise<IPlayerModel>
-/** see types.ts in @lumieducation/h5p-server for details how IPlayerModel looks
+/** see types.ts in @LinhPhan9605/h5p-server for details how IPlayerModel looks
     like **/
 ```
 
 You have to set `loadContentCallback` to a function that retrieves the necessary
 data from the backend. It returns a promise of data that follows the structure
 of IPlayerModel in [types.ts](/packages/h5p-server/src/types.ts) in
-@lumieducation/h5p-server. If there is an error, the callback should throw an
+@LinhPhan9605/h5p-server. If there is an error, the callback should throw an
 error object with the error message in the `message` property.
 
-If you use @lumieducation/h5p-server you will get the necessary information by using a
+If you use @LinhPhan9605/h5p-server you will get the necessary information by using a
 renderer that simply returns the player model if you call
 `H5PPlayer.render(...)`:
 
@@ -173,7 +173,7 @@ const playerModel = await h5pPlayerOnServer.render(contentId, user);
 
 ```ts
 loadContentCallback = async (contentId?: string) => Promise<
-    IEditorModel /** see types.ts in @lumieducation/h5p-server for details **/ & {
+    IEditorModel /** see types.ts in @LinhPhan9605/h5p-server for details **/ & {
         library?: string;
         metadata?: IContentMetadata;
         params?: any;
@@ -183,7 +183,7 @@ loadContentCallback = async (contentId?: string) => Promise<
 This callback is executed when the component needs to load data for a content
 id. The callback must create a request to an endpoint on the server, which
 retrieves all necessary information. The server-side implementation of the
-endpoint using @lumieducation/h5p-server has to combine the results of
+endpoint using @LinhPhan9605/h5p-server has to combine the results of
 H5PEditor.render(...) and H5PEditor.getContent(...). The render must be set to
 simply return the editor model like this:
 
@@ -215,7 +215,7 @@ saveContentCallback = async (
 
 This callback is executed when the editor was told to save its content. You have
 to reach out to the server and persist the changes. When using
-@lumieducation/h5p-server, the server-side endpoint should call
+@LinhPhan9605/h5p-server, the server-side endpoint should call
 `H5PEditor.saveOrUpdateContentReturnMetaData(...)` and then return the result to
 the client, which returns the result as the return value of
 `saveContentCallback`.

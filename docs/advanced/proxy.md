@@ -1,8 +1,8 @@
 # Forward proxy support
 
-@lumieducation/h5p-server has to make outgoing HTTPS requests to contact the H5P
+@LinhPhan9605/h5p-server has to make outgoing HTTPS requests to contact the H5P
 Hub. If your network requires the use of a forward proxy to reach the Internet,
-you must configure @lumieducation/h5p-server to use it for the HTTPS requests.
+you must configure @LinhPhan9605/h5p-server to use it for the HTTPS requests.
 
 There are two ways of enabling the proxy:
 

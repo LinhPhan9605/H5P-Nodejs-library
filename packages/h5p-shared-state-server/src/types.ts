@@ -5,7 +5,7 @@ import type {
     ILibraryMetadata,
     ILibraryName,
     IUser
-} from '@lumieducation/h5p-server';
+} from '@LinhPhan9605/h5p-server';
 
 // The logic check typing
 export interface ILogicCheck {

@@ -7,7 +7,7 @@ import {
     IContentUserData,
     Logger,
     IFinishedUserData
-} from '@lumieducation/h5p-server';
+} from '@LinhPhan9605/h5p-server';
 
 const log = new Logger('MongoContentUserDataStorage');
 

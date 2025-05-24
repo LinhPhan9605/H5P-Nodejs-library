@@ -1,11 +1,11 @@
-# Using @lumieducation/h5p-server to create your own H5P server application
+# Using @LinhPhan9605/h5p-server to create your own H5P server application
 
 ## Installation
 
 Add the library to a project by executing
 
 ```bash
-npm install @lumieducation/h5p-server
+npm install @LinhPhan9605/h5p-server
 ```
 
 ## Adding the library to your project
@@ -18,7 +18,7 @@ you wish so._
 After installation, you can import the library in a JavaScript file with
 
 ```javascript
-const H5P = require('@lumieducation/h5p-server');
+const H5P = require('@LinhPhan9605/h5p-server');
 ```
 
 and instantiate the editor with
@@ -183,7 +183,7 @@ page](../advanced/localization.md) for more details.
 
 ## Customization
 
-An application using @lumieducation/h5p-server can customize the way H5P behaves
+An application using @LinhPhan9605/h5p-server can customize the way H5P behaves
 in several ways. See [the documentation page on
 customization](../advanced/customization.md) for more details.
 

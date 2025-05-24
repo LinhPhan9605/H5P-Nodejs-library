@@ -20,7 +20,7 @@ import {
     H5pError,
     streamToString,
     Logger
-} from '@lumieducation/h5p-server';
+} from '@LinhPhan9605/h5p-server';
 import { ReadableStreamBuffer } from 'stream-buffers';
 
 const log = new Logger('MongoLibraryStorage');
@@ -910,8 +910,8 @@ export default class MongoLibraryStorage implements ILibraryStorage {
     /**
      * Migrates the DB schema from one version to another. You need to call
      * this, when you first deploy the new version.
-     * @param from the old major version of @lumieducation/h5p-mongos3
-     * @param to the new major version of @lumieducation/h5p-mongos3
+     * @param from the old major version of @LinhPhan9605/h5p-mongos3
+     * @param to the new major version of @LinhPhan9605/h5p-mongos3
      */
     public async migrate(from: number, to: number): Promise<void> {
         if (from === 9 && to === 10) {

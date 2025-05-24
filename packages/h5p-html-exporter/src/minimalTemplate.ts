@@ -1,4 +1,4 @@
-import { IIntegration } from '@lumieducation/h5p-server';
+import { IIntegration } from '@LinhPhan9605/h5p-server';
 
 export default (
     integration: IIntegration,

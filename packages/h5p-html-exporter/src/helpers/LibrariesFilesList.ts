@@ -1,4 +1,4 @@
-import { LibraryName, ILibraryName } from '@lumieducation/h5p-server';
+import { LibraryName, ILibraryName } from '@LinhPhan9605/h5p-server';
 
 /**
  * Collects lists of files grouped by libraries.

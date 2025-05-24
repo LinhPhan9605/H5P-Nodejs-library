@@ -35,13 +35,13 @@ in the [React package](../packages/h5p-react.md)).
 
 -   Create an instance of `IContentUserDataStorage`. The recommended storage class
     for production is `MongoContentUserDataStorage` in the
-    `@lumieducation/h5p-mongos3` package. There's also a
-    `FileContentUserDataStorageClass` in the `@lumieducation/h5p-server` package
+    `@LinhPhan9605/h5p-mongos3` package. There's also a
+    `FileContentUserDataStorageClass` in the `@LinhPhan9605/h5p-server` package
     that you can use for development or testing purposes.
 -   Pass the implementation of IContentUserDataStorage into the `H5PEditor` and
     `H5PPlayer` constructor.
 -   Set `setFinishedEnabled` in `IH5PConfig` to `true`.
--   If you use `h5pAjaxExpressRouter` from the `@lumieducation/h5p-express`
+-   If you use `h5pAjaxExpressRouter` from the `@LinhPhan9605/h5p-express`
     package, then the routes for the AJAX endpoint are automatically created. You
     can manually turn them on by setting `routeFinishedData` in the options when
     creating the route.

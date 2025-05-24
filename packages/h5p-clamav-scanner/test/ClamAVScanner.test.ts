@@ -1,6 +1,6 @@
 import path from 'path';
 
-import { MalwareScanResult } from '@lumieducation/h5p-server';
+import { MalwareScanResult } from '@LinhPhan9605/h5p-server';
 
 import ClamAVScanner from '../src/ClamAVScanner';
 

@@ -14,9 +14,9 @@ import {
     libraryAdministrationExpressRouter,
     contentTypeCacheExpressRouter,
     IRequestWithUser
-} from '@lumieducation/h5p-express';
-import H5PHtmlExporter from '@lumieducation/h5p-html-exporter';
-import * as H5P from '@lumieducation/h5p-server';
+} from '@LinhPhan9605/h5p-express';
+import H5PHtmlExporter from '@LinhPhan9605/h5p-html-exporter';
+import * as H5P from '@LinhPhan9605/h5p-server';
 
 import startPageRenderer from './startPageRenderer';
 import expressRoutes from './expressRoutes';
@@ -45,7 +45,7 @@ const start = async (): Promise<void> => {
             backend: {
                 loadPath: path.join(
                     __dirname,
-                    '../../../node_modules/@lumieducation/h5p-server/build/assets/translations/{{ns}}/{{lng}}.json'
+                    '../../../node_modules/@LinhPhan9605/h5p-server/build/assets/translations/{{ns}}/{{lng}}.json'
                 )
             },
             debug: process.env.DEBUG && process.env.DEBUG.includes('i18n'),

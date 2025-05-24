@@ -8,8 +8,8 @@ import {
     IContext,
     IH5PInstance,
     IH5P
-} from '@lumieducation/h5p-webcomponents';
-import type { IPlayerModel } from '@lumieducation/h5p-server';
+} from '@LinhPhan9605/h5p-webcomponents';
+import type { IPlayerModel } from '@LinhPhan9605/h5p-server';
 
 defineElements('h5p-player');
 

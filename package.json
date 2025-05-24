@@ -1,11 +1,11 @@
 {
-    "name": "@lumieducation/h5p-monorepo",
+    "name": "@LinhPhan9605/h5p-monorepo",
     "private": true,
     "version": "7.0.1",
     "license": "GPL-3.0-or-later",
     "repository": {
         "type": "git",
-        "url": "https://github.com/Lumieducation/H5P-Nodejs-library"
+        "url": "https://github.com/LinhPhan9605/H5P-Nodejs-library"
     },
     "scripts": {
         "build:h5p-clamav-scanner": "npm run build --workspace=packages/h5p-clamav-scanner",

@@ -4,8 +4,8 @@ import { Component, createRef, ReactNode, RefObject } from 'react';
 import {
     defineElements,
     H5PEditorComponent as H5PEditorWebComponent
-} from '@lumieducation/h5p-webcomponents';
-import type { IContentMetadata, IEditorModel } from '@lumieducation/h5p-server';
+} from '@LinhPhan9605/h5p-webcomponents';
+import type { IContentMetadata, IEditorModel } from '@LinhPhan9605/h5p-server';
 
 defineElements('h5p-editor');
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { IInstalledLibrary } from '@lumieducation/h5p-server';
+import { IInstalledLibrary } from '@LinhPhan9605/h5p-server';
 
 const yesNo = (value: boolean | 0 | 1) =>
     value ? (

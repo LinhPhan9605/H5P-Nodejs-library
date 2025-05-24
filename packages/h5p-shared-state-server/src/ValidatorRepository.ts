@@ -1,4 +1,4 @@
-import { ILibraryName, LibraryName } from '@lumieducation/h5p-server';
+import { ILibraryName, LibraryName } from '@LinhPhan9605/h5p-server';
 import Ajv, { ValidateFunction } from 'ajv/dist/2020';
 import {
     GetLibraryFileAsJsonFunction,

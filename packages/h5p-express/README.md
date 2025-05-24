@@ -1,8 +1,8 @@
-# @lumieducation/h5p-express
+# @LinhPhan9605/h5p-express
 
 This library provides routes for [Express](https://expressjs.com/) that simplify
 using
-[@lumieducation/h5p-server](https://www.npmjs.com/package/@lumieducation/h5p-server) if you use Express.
+[@LinhPhan9605/h5p-server](https://www.npmjs.com/package/@LinhPhan9605/h5p-server) if you use Express.
 
 **Check out the [GitBook
 documentation](https://docs.lumi.education/usage/ajax-endpoints) for details on
@@ -10,20 +10,20 @@ how to use this package**.
 
 ## Additional related packages
 
-@lumieducation/h5p-express is one of several packages by Lumi Education that work
+@LinhPhan9605/h5p-express is one of several packages by Lumi Education that work
 in conjunction to simplify creating H5P applications. They are all managed in
 the [h5p-nodejs-library monorepo on
-GitHub](https://github.com/lumieducation/h5p-nodejs-library) and are available
+GitHub](https://github.com/LinhPhan9605/h5p-nodejs-library) and are available
 on NPM.
 
 | Package name                      | Functionality                                                             | used in  |
 |-----------------------------------|---------------------------------------------------------------------------|----------|
-| [**@lumieducation/h5p-server**](https://www.npmjs.com/package/@lumieducation/h5p-server)         | the core package to run H5P in NodeJS                                     | backend  |
-| [**@lumieducation/h5p-express**](https://www.npmjs.com/package/@lumieducation/h5p-express)        | routes and controllers for Express                                        | backend  |
-| [**@lumieducation/h5p-webcomponents**](https://www.npmjs.com/package/@lumieducation/h5p-webcomponents)  | native web components to display the H5P player and editor in the browser | frontend |
-| [**@lumieducation/h5p-react**](https://www.npmjs.com/package/@lumieducation/h5p-react)          | React components with the same functionality as the native web components | frontend |
-| [**@lumieducation/h5p-mongos3**](https://www.npmjs.com/package/@lumieducation/h5p-mongos3)        | storage classes for MongoDB and S3                                        | backend  |
-| [**@lumieducation/h5p-html-exporter**](https://www.npmjs.com/package/@lumieducation/h5p-html-exporter)  | an optional component that can create bundled HTML files for exporting    | backend  |
+| [**@LinhPhan9605/h5p-server**](https://www.npmjs.com/package/@LinhPhan9605/h5p-server)         | the core package to run H5P in NodeJS                                     | backend  |
+| [**@LinhPhan9605/h5p-express**](https://www.npmjs.com/package/@LinhPhan9605/h5p-express)        | routes and controllers for Express                                        | backend  |
+| [**@LinhPhan9605/h5p-webcomponents**](https://www.npmjs.com/package/@LinhPhan9605/h5p-webcomponents)  | native web components to display the H5P player and editor in the browser | frontend |
+| [**@LinhPhan9605/h5p-react**](https://www.npmjs.com/package/@LinhPhan9605/h5p-react)          | React components with the same functionality as the native web components | frontend |
+| [**@LinhPhan9605/h5p-mongos3**](https://www.npmjs.com/package/@LinhPhan9605/h5p-mongos3)        | storage classes for MongoDB and S3                                        | backend  |
+| [**@LinhPhan9605/h5p-html-exporter**](https://www.npmjs.com/package/@LinhPhan9605/h5p-html-exporter)  | an optional component that can create bundled HTML files for exporting    | backend  |
 
 ## Examples
 
@@ -32,15 +32,15 @@ used:
 
 | Example type | Tech stack | Location |
 | :--- | :--- | :--- |
-| server-side-rendering | server: Express with JS template rendering client: static HTML, some React for library management | [`/packages/h5p-examples`](https://github.com/Lumieducation/H5P-Nodejs-library/tree/master/packages/h5p-examples) |
-| [Single Page Application](https://docs.lumi.education/development/rest) | server: Express with REST endpoints client: React | [`/packages/h5p-rest-example-server`](https://github.com/Lumieducation/H5P-Nodejs-library/tree/master/packages/h5p-rest-example-server) [`/packages/h5p-rest-example-client`](https://github.com/Lumieducation/H5P-Nodejs-library/tree/master/packages/h5p-rest-example-server) |
+| server-side-rendering | server: Express with JS template rendering client: static HTML, some React for library management | [`/packages/h5p-examples`](https://github.com/LinhPhan9605/H5P-Nodejs-library/tree/master/packages/h5p-examples) |
+| [Single Page Application](https://docs.lumi.education/development/rest) | server: Express with REST endpoints client: React | [`/packages/h5p-rest-example-server`](https://github.com/LinhPhan9605/H5P-Nodejs-library/tree/master/packages/h5p-rest-example-server) [`/packages/h5p-rest-example-client`](https://github.com/LinhPhan9605/H5P-Nodejs-library/tree/master/packages/h5p-rest-example-server) |
 
 ## Versioning
 
 We use [SemVer](http://semver.org/) for versioning. The versions of all packages
 of the monorepo are all increased at the same time, so you should always update
 all packages at once. For the versions available, see the [tags on this
-repository](https://github.com/Lumieducation/h5p-nodejs-library/tags).
+repository](https://github.com/LinhPhan9605/h5p-nodejs-library/tags).
 
 ## License
 

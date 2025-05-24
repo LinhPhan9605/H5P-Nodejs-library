@@ -16,13 +16,13 @@ which you can use like this:
 Import the Express adapter router like this:
 
 ```typescript
-import h5pAjaxExpressRouter from '@lumieducation/h5p-express';
+import h5pAjaxExpressRouter from '@LinhPhan9605/h5p-express';
 ```
 
 or in classic JS style:
 
 ```javascript
-const h5pAjaxExpressRouter = require('@lumieducation/h5p-express');
+const h5pAjaxExpressRouter = require('@LinhPhan9605/h5p-express');
 ```
 
 Then add the router to your Express app like this
@@ -77,7 +77,7 @@ methods when your routes are called.
 The table below shows which routes you must implement and which ones can be left
 out. Note that routes of the Type _H5P_ are needed by the H5P client and must be
 implemented in some way. Routes of the type _custom_ are specific to
-@lumieducation/h5p-server. The exact name of the routes can be [configured in
+@LinhPhan9605/h5p-server. The exact name of the routes can be [configured in
 IH5PConfig](ajax-endpoints.md#configuring-custom-endpoint-routes) and might be
 different in your setup.
 

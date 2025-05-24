@@ -87,7 +87,7 @@ If you want to localize certain aspects of the editor, you must pass in a
 function that returns translated strings for certain keys. This function in turn
 can call another translation library to perform the localization. We suggest
 using [i18next](https://www.npmjs.com/package/i18next) as the keys
-@lumieducation/h5p-server uses follow the conventions of i18next. You can still
+@LinhPhan9605/h5p-server uses follow the conventions of i18next. You can still
 choose any translation library you like.
 
 ```typescript

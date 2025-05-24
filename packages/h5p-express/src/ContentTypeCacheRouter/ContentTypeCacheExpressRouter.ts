@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { ContentTypeCache } from '@lumieducation/h5p-server';
+import { ContentTypeCache } from '@LinhPhan9605/h5p-server';
 
 import {
     errorHandler,

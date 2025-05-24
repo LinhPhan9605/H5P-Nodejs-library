@@ -8,7 +8,7 @@ import path from 'path';
 import { readFile, stat } from 'fs/promises';
 import { createReadStream } from 'fs';
 
-import { ILibraryMetadata, streamToString } from '@lumieducation/h5p-server';
+import { ILibraryMetadata, streamToString } from '@LinhPhan9605/h5p-server';
 import MongoS3LibraryStorage from '../src/MongoS3LibraryStorage';
 import initS3 from '../src/initS3';
 import { emptyAndDeleteBucket } from './s3-utils';

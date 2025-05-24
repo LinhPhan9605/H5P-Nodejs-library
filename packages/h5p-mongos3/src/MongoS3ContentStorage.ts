@@ -14,7 +14,7 @@ import {
     ILibraryName,
     H5pError,
     Logger
-} from '@lumieducation/h5p-server';
+} from '@LinhPhan9605/h5p-server';
 
 import { validateFilename, sanitizeFilename, deleteObjects } from './S3Utils';
 

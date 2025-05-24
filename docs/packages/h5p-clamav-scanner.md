@@ -1,7 +1,7 @@
 # Virus scanner using ClamAV
 
 This package implements the `IFileMalwareScanner` malware scanning interface of
-the @lumieducation/h5p-server package by calling a
+the @LinhPhan9605/h5p-server package by calling a
 [ClamAV](https://www.clamav.net/) scanner. ClamAV can be either installed on the
 host, called through a UNIX socket or a TCP socket. The package is a light
 wrapper around the NPM package
@@ -24,7 +24,7 @@ interested in pull requests with other implementations!
 ## Usage
 
 ```ts
-import ClamAVScanner from '@lumieducation/clamav-scanner';
+import ClamAVScanner from '@LinhPhan9605/clamav-scanner';
 
 // There is no public constructor as the initialization is async.
 // That's why we have to use an async factory method.

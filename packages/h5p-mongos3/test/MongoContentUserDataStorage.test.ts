@@ -2,7 +2,7 @@ import { Collection, Db, MongoClient, ObjectId } from 'mongodb';
 
 import MongoContentUserDataStorage from '../src/MongoContentUserDataStorage';
 import ContentUserDataStorageTests from '../../h5p-server/test/implementation/ContentUserDataStorage';
-import { IContentUserDataStorage } from '@lumieducation/h5p-server';
+import { IContentUserDataStorage } from '@LinhPhan9605/h5p-server';
 
 describe('MongoContentUserDataStorage', () => {
     let mongo: Db;

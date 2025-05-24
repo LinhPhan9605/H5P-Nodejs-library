@@ -25,7 +25,7 @@ The implementation depends on this NPM package:
 You must import the storage implementation:
 
 ```typescript
-import { MongoLibraryStorage, initMongo } from '@lumieducation/h5p-mongos3';
+import { MongoLibraryStorage, initMongo } from '@LinhPhan9605/h5p-mongos3';
 ```
 
 or in classic JS style:

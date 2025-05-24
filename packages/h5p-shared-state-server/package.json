@@ -1,5 +1,5 @@
 {
-    "name": "@lumieducation/h5p-shared-state-server",
+    "name": "@LinhPhan9605/h5p-shared-state-server",
     "version": "10.0.4",
     "description": "A component providing server-side support for shared states with ShareDB",
     "main": "build/SharedStateServer.js",
@@ -12,7 +12,7 @@
     "author": "S. Rettig",
     "license": "GPL-3.0",
     "dependencies": {
-        "@lumieducation/h5p-server": "^10.0.4",
+        "@LinhPhan9605/h5p-server": "^10.0.4",
         "@teamwork/websocket-json-stream": "^2.0.0",
         "ajv": "^8.12.0",
         "debug": "^4.3.4",

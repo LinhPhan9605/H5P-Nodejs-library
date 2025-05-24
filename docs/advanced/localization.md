@@ -16,7 +16,7 @@ several places:
 1. The core language strings (found in language/xxx.js) must be referenced in the HTML file and in the array which references the JS files in the `IIntegration` object (to make sure the language is also used in iframes).
 2. The H5P editor client (running in the browser) must be notified to use a certain language. It will then request the respective localized strings of H5P libraries it loads.
 3. Several string properties of IIntegration must be returned localized.
-4. The errors thrown by @lumieducation/h5p-server must be localized.
+4. The errors thrown by @LinhPhan9605/h5p-server must be localized.
 
 Some places of H5P cannot be localized at this time (this must be changed by
 Joubel):
@@ -25,7 +25,7 @@ Joubel):
 
 ### Changing the language of the editor
 
-@lumieducation/h5p-server supports localizing the editor as far as possible. The table
+@LinhPhan9605/h5p-server supports localizing the editor as far as possible. The table
 shows where this must be done:
 
 | Place | What to do |
@@ -33,7 +33,7 @@ shows where this must be done:
 | 1. core language strings | Call `H5PEditor.render(contentId, language, ...)` with the language code you need. |
 | 2. notify H5P editor client | Call `H5PEditor.render(contentId, language, ...)` with the language code you need. |
 | 3. properties of IIntegration | Pass a valid `translationCallback` of type `ITranslationFunction` to the constructor of `H5PEditor` |
-| 4. error messages emitted by @lumieducation/h5p-server | Catch errors of types `H5PError` and `AggregateH5PError` and localize the message property yourself. |
+| 4. error messages emitted by @LinhPhan9605/h5p-server | Catch errors of types `H5PError` and `AggregateH5PError` and localize the message property yourself. |
 | 5. H5P Hub | When constructing `H5PEditor` set the option `enableHubLocalization` to true and load the namespace `hub` in your localization system. Call `H5PEditor.getContentTypeCache()` with a language or make sure that `req.language` is set in the GET AJAX route when using `h5p-express`. |
 | 6. library selector | When constructing `H5PEditor` set the option `enableLibraryNameLocalization` to true and load the namespace `library-metadata` in your localization system. Call `H5PEditor.getLibraryOverview()` with a language or make sure that `req.language` is set in the POST AJAX route when using `h5p-express`. |
 
@@ -42,7 +42,7 @@ do 1,2 and 3. The [Express adapter for the Ajax endpoints](/packages/h5p-express
 already implements 4 but requires the `t(...)` function to be added to the `req`
 object.
 
-The language strings used by @lumieducation/h5p-server all follow the
+The language strings used by @LinhPhan9605/h5p-server all follow the
 conventions of [i18next](https://www.npmjs.com/package/i18next) and it is a good
 library to perform the translation for cases 3 and 4. However, you are free to
 use whatever translation library you want as long as you make sure to pass a
@@ -79,16 +79,16 @@ great majority of the language strings come packaged with the content types or
 are part of the H5P core (case 1 and 2 from the table), some strings must be
 localized by the server implementation. The Drupal, WordPress and Moodle PHP
 implementation all come with their own translation system and set of language
-strings. That's why @lumieducation/h5p-server must also follow this path and
+strings. That's why @LinhPhan9605/h5p-server must also follow this path and
 localize strings itself.
 
-The language strings used by @lumieducation/h5p-server can be found in
+The language strings used by @LinhPhan9605/h5p-server can be found in
 `/packages/h5p-server/assets/translations/`. In there, each namespace (group of
 language strings) has it own directory, which in turn contains the language
 files, which are named like this `en.json`, `de.json` etc.
 
 If you want to change the text for your language or add another language, you
 must do the changes in these directories. You can also add new namespaces if you
-want to contribute to the development of @lumieducation/h5p-server and develop a
+want to contribute to the development of @LinhPhan9605/h5p-server and develop a
 module which is self-contained (like the optional storage implementations). All
 general language strings should be put into the namespace `server`.

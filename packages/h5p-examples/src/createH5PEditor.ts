@@ -4,12 +4,12 @@ import { createClient } from '@redis/client';
 import debug from 'debug';
 import type { Db } from 'mongodb';
 
-import * as H5P from '@lumieducation/h5p-server';
-import * as dbImplementations from '@lumieducation/h5p-mongos3';
-import RedisLockProvider from '@lumieducation/h5p-redis-lock';
-import { ILockProvider } from '@lumieducation/h5p-server';
-import SvgSanitizer from '@lumieducation/h5p-svg-sanitizer';
-import ClamAVScanner from '@lumieducation/h5p-clamav-scanner';
+import * as H5P from '@LinhPhan9605/h5p-server';
+import * as dbImplementations from '@LinhPhan9605/h5p-mongos3';
+import RedisLockProvider from '@LinhPhan9605/h5p-redis-lock';
+import { ILockProvider } from '@LinhPhan9605/h5p-server';
+import SvgSanitizer from '@LinhPhan9605/h5p-svg-sanitizer';
+import ClamAVScanner from '@LinhPhan9605/h5p-clamav-scanner';
 
 let mongoDb;
 async function getMongoDb(): Promise<Db> {

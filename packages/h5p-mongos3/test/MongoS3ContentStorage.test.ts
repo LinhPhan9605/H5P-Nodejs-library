@@ -10,7 +10,7 @@ import promisepipe from 'promisepipe';
 import { createReadStream } from 'fs';
 import { stat } from 'fs/promises';
 
-import { IContentMetadata } from '@lumieducation/h5p-server';
+import { IContentMetadata } from '@LinhPhan9605/h5p-server';
 
 import MongoS3ContentStorage from '../src/MongoS3ContentStorage';
 import User from './User';

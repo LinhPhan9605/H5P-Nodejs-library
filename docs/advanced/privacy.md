@@ -1,4 +1,4 @@
-# Privacy when using @lumieducation/h5p-server as part of your application
+# Privacy when using @LinhPhan9605/h5p-server as part of your application
 
 You can use the following information to make sure you comply with your local
 regulations (e.g. GDPR). You can base your privacy declaration on parts of it.
@@ -19,7 +19,7 @@ user directory.
 
 ## Processed personal data
 
-The implementation passes some personal data to @lumieducation/h5p-server for H5P to
+The implementation passes some personal data to @LinhPhan9605/h5p-server for H5P to
 work properly. This data is used in several places by the system and might also
 be visible to the user (and in the future: other users).
 
@@ -59,10 +59,10 @@ environment that processes real user data.
 
 ### Communication with 3rd party Internet servers
 
-The @lumieducation/h5p-server **package** (on the server) communicates with the
+The @LinhPhan9605/h5p-server **package** (on the server) communicates with the
 official H5P Hub at h5p.org to retrieve the current list of available content
 types and to download new or updated content types from the H5P Hub. When first
-contacting the H5P Hub, the @lumieducation/h5p-server requests the creation of a
+contacting the H5P Hub, the @LinhPhan9605/h5p-server requests the creation of a
 unique id **for the server**, which is then transmitted to the H5P Hub on every
 content type list update. It also transmits the following information about your
 server:
@@ -71,7 +71,7 @@ server:
 * the supported core API version of H5P
 * the version of the PHP implementation the server imitates
 * a local id of the server (a hash value of the path of the server files)
-* that the server runs on @lumieducation/h5p-server and with which version
+* that the server runs on @LinhPhan9605/h5p-server and with which version
 * whether the site is a localhost, in a private network or accessible in the
 
   Internet (configured by you in the IH5PConfig)

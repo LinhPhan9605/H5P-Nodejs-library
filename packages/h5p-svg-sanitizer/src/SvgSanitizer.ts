@@ -2,7 +2,7 @@ import createDOMPurify from 'dompurify';
 import { JSDOM } from 'jsdom';
 import { readFile, writeFile } from 'fs/promises';
 
-import { FileSanitizerResult, IFileSanitizer } from '@lumieducation/h5p-server';
+import { FileSanitizerResult, IFileSanitizer } from '@LinhPhan9605/h5p-server';
 
 const window = new JSDOM('').window;
 const DOMPurify = createDOMPurify(window);

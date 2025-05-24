@@ -1,6 +1,6 @@
 # H5P-Nodejs-library
 
-[![CircleCI](https://circleci.com/gh/Lumieducation/H5P-Nodejs-library/tree/master.svg?style=svg)](https://circleci.com/gh/Lumieducation/H5P-Nodejs-library/tree/master) [![Coverage Status](https://coveralls.io/repos/github/Lumieducation/H5P-Nodejs-library/badge.svg?branch=master)](https://coveralls.io/github/Lumieducation/H5P-Nodejs-library?branch=master)
+[![CircleCI](https://circleci.com/gh/LinhPhan9605/H5P-Nodejs-library/tree/master.svg?style=svg)](https://circleci.com/gh/LinhPhan9605/H5P-Nodejs-library/tree/master) [![Coverage Status](https://coveralls.io/repos/github/LinhPhan9605/H5P-Nodejs-library/badge.svg?branch=master)](https://coveralls.io/github/LinhPhan9605/H5P-Nodejs-library?branch=master)
 
 This library provides everything needed to create custom H5P servers running on
 NodeJS. It is written in TypeScript and fully typed, which makes it much easier
@@ -32,15 +32,15 @@ be installed through NPM. The packages are meant to be combined.
 
 | Package name                                                                  | Functionality                                                                                           | used in  |
 | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | -------- |
-| **@lumieducation/h5p-server**                                                 | the core package to run H5P in NodeJS                                                                   | backend  |
-| **@lumieducation/h5p-express**                                                | routes and controllers for Express                                                                      | backend  |
-| [**@lumieducation/h5p-webcomponents**](/docs/packages/h5p-webcomponents.md)   | native web components to display the H5P player and editor in the browser                               | frontend |
-| [**@lumieducation/h5p-react**](/docs/packages/h5p-react.md)                   | React components with the same functionality as the native web components                               | frontend |
-| [**@lumieducation/h5p-mongos3**](/docs/packages/h5p-mongos3/)                 | storage classes for MongoDB and S3                                                                      | backend  |
-| [**@lumieducation/h5p-redis-lock**](/docs/packages/h5p-redis-lock.md)         | storage class for locks with Redis                                                                      | backend  |
-| **@lumieducation/h5p-html-exporter**                                          | an optional component that can create bundled HTML files for exporting                                  | backend  |
-| [**@lumieducation/h5p-svg-sanitizer**](/docs/packages/h5p-svg-sanitizer.md)   | an optional package that protects against XSS attack in SVGs if you want to enable SVG in content files | backend  |
-| [**@lumieducation/h5p-clamav-scanner**](/docs/packages/h5p-clamav-scanner.md) | an optional package that checks file uploads for viruses                                                | backend  |
+| **@LinhPhan9605/h5p-server**                                                 | the core package to run H5P in NodeJS                                                                   | backend  |
+| **@LinhPhan9605/h5p-express**                                                | routes and controllers for Express                                                                      | backend  |
+| [**@LinhPhan9605/h5p-webcomponents**](/docs/packages/h5p-webcomponents.md)   | native web components to display the H5P player and editor in the browser                               | frontend |
+| [**@LinhPhan9605/h5p-react**](/docs/packages/h5p-react.md)                   | React components with the same functionality as the native web components                               | frontend |
+| [**@LinhPhan9605/h5p-mongos3**](/docs/packages/h5p-mongos3/)                 | storage classes for MongoDB and S3                                                                      | backend  |
+| [**@LinhPhan9605/h5p-redis-lock**](/docs/packages/h5p-redis-lock.md)         | storage class for locks with Redis                                                                      | backend  |
+| **@LinhPhan9605/h5p-html-exporter**                                          | an optional component that can create bundled HTML files for exporting                                  | backend  |
+| [**@LinhPhan9605/h5p-svg-sanitizer**](/docs/packages/h5p-svg-sanitizer.md)   | an optional package that protects against XSS attack in SVGs if you want to enable SVG in content files | backend  |
+| [**@LinhPhan9605/h5p-clamav-scanner**](/docs/packages/h5p-clamav-scanner.md) | an optional package that checks file uploads for viruses                                                | backend  |
 
 ## Examples
 
@@ -84,7 +84,7 @@ or [c@Lumi.education](mailto:c@lumi.education).
 ## Versioning
 
 We use [SemVer](http://semver.org/) for versioning. For the versions available,
-see the [tags on this repository](https://github.com/Lumieducation/Lumi/tags).
+see the [tags on this repository](https://github.com/LinhPhan9605/Lumi/tags).
 
 ## License
 

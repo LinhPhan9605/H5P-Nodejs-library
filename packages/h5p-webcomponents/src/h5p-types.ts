@@ -1,4 +1,4 @@
-import type { IIntegration } from '@lumieducation/h5p-server';
+import type { IIntegration } from '@LinhPhan9605/h5p-server';
 
 export interface IH5PInstance {
     contentId: string;

@@ -6,8 +6,8 @@ when installing libraries.
 
 ```ts
 import { createClient } from '@redis/client';
-import { H5PEditor, H5PPlayer } from '@lumieducation/h5p-server';
-import RedisLockProvider from '@lumieducation/h5p-redis-lock';
+import { H5PEditor, H5PPlayer } from '@LinhPhan9605/h5p-server';
+import RedisLockProvider from '@LinhPhan9605/h5p-redis-lock';
 
 // Create a regular redis connection
 const redisClient = createClient({

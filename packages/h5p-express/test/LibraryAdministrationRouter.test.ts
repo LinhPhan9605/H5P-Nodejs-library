@@ -16,7 +16,7 @@ import {
     fsImplementations,
     H5PConfig,
     H5PEditor
-} from '@lumieducation/h5p-server';
+} from '@LinhPhan9605/h5p-server';
 
 import User from './User';
 import LibraryAdministrationExpressRouter from '../src/LibraryAdministrationRouter/LibraryAdministrationExpressRouter';

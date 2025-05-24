@@ -23,7 +23,7 @@ mongodb`!**
 You must import the storage implementation via a submodule:
 
 ```typescript
-import { MongoS3ContentStorage, initS3, initMongo } from '@lumieducation/h5p-mongos3';
+import { MongoS3ContentStorage, initS3, initMongo } from '@LinhPhan9605/h5p-mongos3';
 ```
 
 or in classic JS style:

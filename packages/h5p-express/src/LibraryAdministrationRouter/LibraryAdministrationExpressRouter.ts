@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import { H5PEditor, LibraryAdministration } from '@lumieducation/h5p-server';
+import { H5PEditor, LibraryAdministration } from '@LinhPhan9605/h5p-server';
 import LibraryAdministrationExpressController from './LibraryAdministrationController';
 import LibraryAdministrationExpressRouterOptions from './LibraryAdministrationExpressRouterOptions';
 import {

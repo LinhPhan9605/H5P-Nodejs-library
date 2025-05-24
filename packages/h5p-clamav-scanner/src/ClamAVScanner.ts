@@ -5,7 +5,7 @@ import {
     IFileMalwareScanner,
     MalwareScanResult,
     Logger
-} from '@lumieducation/h5p-server';
+} from '@LinhPhan9605/h5p-server';
 
 import { removeUndefinedAttributesAndEmptyObjects } from './helpers';
 
@@ -38,7 +38,7 @@ export default class ClamAVScanner implements IFileMalwareScanner {
      * https://www.npmjs.com/package/clamscan). This is simply passed through to
      * ClamAV, expect for the parameters `removeInfected`, `quarantineInfected`
      * and `scanRecursively`: these are set to false to make sure the behavior
-     * is as @lumieducation/h5p-server expects it.
+     * is as @LinhPhan9605/h5p-server expects it.
      */
     public static async create(
         clamavOptions?: NodeClam.Options

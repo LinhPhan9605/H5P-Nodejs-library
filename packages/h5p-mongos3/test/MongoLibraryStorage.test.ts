@@ -7,7 +7,7 @@ import { readFile, stat } from 'fs/promises';
 import { createReadStream } from 'fs';
 import path from 'path';
 
-import { ILibraryMetadata, streamToString } from '@lumieducation/h5p-server';
+import { ILibraryMetadata, streamToString } from '@LinhPhan9605/h5p-server';
 import MongoLibraryStorage from '../src/MongoLibraryStorage';
 
 describe('MongoS3LibraryStorage', () => {

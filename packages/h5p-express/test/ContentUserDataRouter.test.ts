@@ -4,7 +4,7 @@ import express from 'express';
 import fileUpload from 'express-fileupload';
 import path from 'path';
 import supertest from 'supertest';
-import * as H5P from '@lumieducation/h5p-server';
+import * as H5P from '@LinhPhan9605/h5p-server';
 
 import User from './User';
 import ContentUserDataExpressRouter from '../src/ContentUserDataRouter/ContentUserDataExpressRouter';

@@ -1,6 +1,6 @@
 import { lock } from 'simple-redis-mutex';
 import { createClient } from '@redis/client';
-import { ILockProvider, Logger } from '@lumieducation/h5p-server';
+import { ILockProvider, Logger } from '@LinhPhan9605/h5p-server';
 
 const log = new Logger('RedisLockProvider');
 

@@ -9,7 +9,7 @@ import { dir } from 'tmp-promise';
 import { readFile } from 'fs/promises';
 import { createReadStream } from 'fs';
 
-import * as H5P from '@lumieducation/h5p-server';
+import * as H5P from '@LinhPhan9605/h5p-server';
 
 import User from './User';
 import H5PAjaxExpressRouter from '../src/H5PAjaxRouter/H5PAjaxExpressRouter';

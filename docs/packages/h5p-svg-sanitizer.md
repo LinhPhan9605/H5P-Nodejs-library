@@ -18,7 +18,7 @@ sanitization.
 
 ## Usage
 
-1. Install the `@lumieducation/h5p-svg-sanitizer` package in your application.
+1. Install the `@LinhPhan9605/h5p-svg-sanitizer` package in your application.
 2. Add the sanitizer to the H5P editor object options and add the `svg`
    extension to the `contentWhitelist` property of the H5P configuration:
 

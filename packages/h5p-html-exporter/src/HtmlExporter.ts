@@ -25,7 +25,7 @@ import {
     streamToString,
     IIntegration,
     ITranslationFunction
-} from '@lumieducation/h5p-server';
+} from '@LinhPhan9605/h5p-server';
 
 import postCssRemoveRedundantUrls from './helpers/postCssRemoveRedundantFontUrls';
 import LibrariesFilesList from './helpers/LibrariesFilesList';
@@ -547,7 +547,7 @@ export default class HtmlExporter {
                     // Turkish İ character, the resulting relative path is
                     // broken. We work around this by temporarily changing the
                     // working directory to the root. See
-                    // https://github.com/Lumieducation/H5P-Nodejs-library/issues/1679#issuecomment-909344236
+                    // https://github.com/LinhPhan9605/H5P-Nodejs-library/issues/1679#issuecomment-909344236
                     if (process.platform === 'win32') {
                         oldCwd = process.cwd();
                         process.chdir('c:');

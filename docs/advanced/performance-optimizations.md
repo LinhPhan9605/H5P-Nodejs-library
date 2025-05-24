@@ -1,6 +1,6 @@
 # Performance optimizations for production use
 
-There are a few ways in which the performance of `@lumieducation/h5p-server` can
+There are a few ways in which the performance of `@LinhPhan9605/h5p-server` can
 be improved:
 
   - [Caching library storage](#caching-library-storage)
@@ -28,8 +28,8 @@ for more details.
 This is how you use the storage:
 
 ```javascript
-import * as H5P from '@lumieducation/h5p-server';
-// const H5P = require('@lumieducation/h5p-server'); // old-style require alternative
+import * as H5P from '@LinhPhan9605/h5p-server';
+// const H5P = require('@LinhPhan9605/h5p-server'); // old-style require alternative
 
 const cachedStorage = new H5P.cacheImplementations.CachedLibraryStorage(
     new H5P.fsImplementations.FileLibraryStorage(localLibraryPath)
@@ -42,7 +42,7 @@ Check out how to construct the H5PEditor with the storage
 
 ## Serving the library files from a different system
 
-While you can use the inbuilt methods of `@lumieducation/h5p-server` to serve the
+While you can use the inbuilt methods of `@LinhPhan9605/h5p-server` to serve the
 library files (JavaScript and CSS files used by the actual content types) to
 the browser of the user, it is also possible to serve them directly, as they are
 simple static files.
@@ -64,7 +64,7 @@ aren't lost due to caching.
 
 ## Horizontal scaling
 
-It is possible to use `@lumieducation/h5p-server` in a setup in which multiple
+It is possible to use `@LinhPhan9605/h5p-server` in a setup in which multiple
 instances of it are executed in parallel (on a single machine to make use of
 multi-core processors or on multiple machines). When doing this, pay attention
 to this:

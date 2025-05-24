@@ -1,7 +1,7 @@
 import { S3, DeleteObjectsCommand } from '@aws-sdk/client-s3';
 import crypto from 'crypto';
 
-import { H5pError, Logger, utils } from '@lumieducation/h5p-server';
+import { H5pError, Logger, utils } from '@LinhPhan9605/h5p-server';
 
 const { generalizedSanitizeFilename } = utils;
 

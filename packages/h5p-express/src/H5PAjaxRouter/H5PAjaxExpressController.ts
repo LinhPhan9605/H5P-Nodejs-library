@@ -3,7 +3,7 @@ import {
     H5PEditor,
     H5pError,
     H5PAjaxEndpoint
-} from '@lumieducation/h5p-server';
+} from '@LinhPhan9605/h5p-server';
 import { Readable } from 'stream';
 import { IRequestWithUser, IActionRequest } from '../expressTypes';
 

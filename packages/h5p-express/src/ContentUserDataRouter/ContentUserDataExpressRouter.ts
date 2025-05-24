@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { ContentUserDataManager, IH5PConfig } from '@lumieducation/h5p-server';
+import { ContentUserDataManager, IH5PConfig } from '@LinhPhan9605/h5p-server';
 
 import {
     errorHandler,

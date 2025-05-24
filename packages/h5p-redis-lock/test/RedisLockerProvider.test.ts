@@ -5,7 +5,7 @@ import {
     fsImplementations,
     LibraryManager,
     ILibraryInstallResult
-} from '@lumieducation/h5p-server';
+} from '@LinhPhan9605/h5p-server';
 import RedisLockProvider from '../src/RedisLockProvider';
 
 const redisPort = process.env.LOCK_REDIS_PORT

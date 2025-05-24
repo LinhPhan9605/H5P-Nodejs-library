@@ -1,8 +1,8 @@
 import path from 'path';
 import { access, mkdir, readdir, rename, rm } from 'fs/promises';
 
-import PackageImporter from '@lumieducation/h5p-server/src/PackageImporter';
-import Logger from '@lumieducation/h5p-server/src/helpers/Logger';
+import PackageImporter from '@LinhPhan9605/h5p-server/src/PackageImporter';
+import Logger from '@LinhPhan9605/h5p-server/src/helpers/Logger';
 
 const log = new Logger('exportPackage');
 /**

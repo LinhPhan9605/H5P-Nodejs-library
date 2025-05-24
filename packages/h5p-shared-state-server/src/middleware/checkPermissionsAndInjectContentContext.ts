@@ -1,4 +1,4 @@
-import { IUser, LibraryName } from '@lumieducation/h5p-server';
+import { IUser, LibraryName } from '@LinhPhan9605/h5p-server';
 import ShareDB from 'sharedb';
 import debug from 'debug';
 

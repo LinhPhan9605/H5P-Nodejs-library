@@ -71,7 +71,7 @@ general process while working:
 
 1. [Fork](https://help.github.com/articles/fork-a-repo/) the project and create
    a new branch, using [the branch naming
-   scheme](https://github.com/Lumieducation/H5P-Nodejs-library/tree/027b83add22a5f17a898c45f8fc3e55b83eb877d/docs/git-workflow.md#branch-naming-scheme),
+   scheme](https://github.com/LinhPhan9605/H5P-Nodejs-library/tree/027b83add22a5f17a898c45f8fc3e55b83eb877d/docs/git-workflow.md#branch-naming-scheme),
    _e.g._ `add/video-preview` or `fix/1337-language-too-geeky`.
 2. Make your first commit: any will do even if empty or trivial, but we need
    something in order to create the initial pull request. [Create the pull

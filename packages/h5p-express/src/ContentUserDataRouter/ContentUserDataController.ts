@@ -5,7 +5,7 @@ import {
     IPostContentUserData,
     AjaxSuccessResponse,
     IH5PConfig
-} from '@lumieducation/h5p-server';
+} from '@LinhPhan9605/h5p-server';
 
 import { IRequestWithUser } from '../expressTypes';
 

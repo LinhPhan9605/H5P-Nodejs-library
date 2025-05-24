@@ -29,7 +29,7 @@ import {
     MongoS3LibraryStorage,
     initS3,
     initMongo
-} from '@lumieducation/h5p-mongos3';
+} from '@LinhPhan9605/h5p-mongos3';
 ```
 
 or in classic JS style:

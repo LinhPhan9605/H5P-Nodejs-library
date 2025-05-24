@@ -3,7 +3,7 @@
 To find out what this library provides for you and what you must implement on
 your own, check out the [architecture overview](architecture.md) first.
 
-Then, read about how to [integrate @lumieducation/h5p-server](integrating.md)
+Then, read about how to [integrate @LinhPhan9605/h5p-server](integrating.md)
 into your own NodeJs application.
 
 Next, you must [add several HTTP routes to your application](ajax-endpoints.md)

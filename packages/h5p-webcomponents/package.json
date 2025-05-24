@@ -1,12 +1,12 @@
 {
-    "name": "@lumieducation/h5p-webcomponents",
+    "name": "@LinhPhan9605/h5p-webcomponents",
     "version": "10.0.4",
     "description": "A Web Component wrapper around the H5P Editor and Player",
     "author": "Sebastian Rettig",
     "license": "GPL-3.0-or-later",
     "repository": {
         "type": "git",
-        "url": "https://github.com/Lumieducation/h5p-webcomponents"
+        "url": "https://github.com/LinhPhan9605/h5p-webcomponents"
     },
     "main": "./build/umd/index.js",
     "module": "./build/es2015/index.js",
@@ -30,7 +30,7 @@
         "deepmerge": "^4.3.1"
     },
     "devDependencies": {
-        "@lumieducation/h5p-server": "^10.0.4",
+        "@LinhPhan9605/h5p-server": "^10.0.4",
         "@types/resize-observer-browser": "0.1.11"
     },
     "files": [
