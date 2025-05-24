@@ -10,3 +10,4 @@
 ## Reporting a Vulnerability
 
 Report vulnerability or other security concerns to [security@lumi.education](mailto:security@lumi.education) and don't post them as a public issue!
+
