@@ -44,7 +44,7 @@ services:
     h5p:
         build: ../
         # ports:
-        #     - '8080:8080'
+        #     - '3009:3009'
         depends_on:
             - mongo
             - minio
@@ -84,7 +84,7 @@ services:
         depends_on:
             - h5p
         ports:
-            - 8080:8080
+            - 3009:3009
 
 volumes:
     mongodb_data:

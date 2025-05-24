@@ -60,7 +60,7 @@ context ids.
 
 The server-side-rendering example supports context ids. You can set the context
 id by passing it as a query parameter in the URL, e.g.
-`http://localhost:8080/h5p/play/<CONTENTID>?contextId=<CONTEXTID>` where
+`http://localhost:3009/h5p/play/<CONTENTID>?contextId=<CONTEXTID>` where
 `<CONTEXTID>` is an arbitrary value you can make up on the fly.
 
 The REST example also supports context ids. You can see the currently used

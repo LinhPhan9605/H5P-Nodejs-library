@@ -13,7 +13,7 @@ You'll need:
 * Docker Compose
 
 You can access the application by calling
-[http://localhost:8080](http://localhost:8080) from your browser.
+[http://localhost:3009](http://localhost:3009) from your browser.
 
 ## Commands
 
