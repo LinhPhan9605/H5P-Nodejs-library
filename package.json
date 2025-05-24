@@ -125,6 +125,7 @@
         "packages/h5p-shared-state-server",
         "packages/h5p-svg-sanitizer",
         "packages/h5p-clamav-scanner",
-        "packages/h5p-examples"
+        "packages/h5p-examples",
+        "packages/h5p-postgresql"
     ]
 }

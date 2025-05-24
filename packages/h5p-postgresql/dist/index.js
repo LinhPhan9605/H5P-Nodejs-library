@@ -1,8 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PostgresqlConnection = void 0;
+exports.PostgresqlConnection = exports.defaultConfig = exports.PostgresContentUserDataStorage = void 0;
 require("dotenv/config");
 const pg_1 = require("pg");
+var PostgresContentUserDataStorage_1 = require("./PostgresContentUserDataStorage");
+Object.defineProperty(exports, "PostgresContentUserDataStorage", { enumerable: true, get: function () { return PostgresContentUserDataStorage_1.PostgresContentUserDataStorage; } });
+var config_1 = require("./config");
+Object.defineProperty(exports, "defaultConfig", { enumerable: true, get: function () { return config_1.defaultConfig; } });
 class PostgresqlConnection {
     constructor(config) {
         this.pool = new pg_1.Pool(config);

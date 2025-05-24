@@ -13,6 +13,8 @@ import {
     h5pAjaxExpressRouter,
     libraryAdministrationExpressRouter,
     contentTypeCacheExpressRouter,
+    contentUserDataExpressRouter,
+    finishedDataExpressRouter,
     IRequestWithUser
 } from '@LinhPhan9605/h5p-express';
 import H5PHtmlExporter from '@LinhPhan9605/h5p-html-exporter';
@@ -153,20 +155,37 @@ const start = async (): Promise<void> => {
 
     // The Express adapter handles GET and POST requests to various H5P
     // endpoints. You can add an options object as a last parameter to configure
-    // which endpoints you want to use. In this case we don't pass an options
-    // object, which means we get all of them.
+    // which endpoints you want to use.
     server.use(
         h5pEditor.config.baseUrl,
         h5pAjaxExpressRouter(
             h5pEditor,
-            path.resolve(path.join(__dirname, '../h5p/core')), // the path on the local disc where the
-            // files of the JavaScript client of the player are stored
-            path.resolve(path.join(__dirname, '../h5p/editor')), // the path on the local disc where the
-            // files of the JavaScript client of the editor are stored
-            undefined,
-            'auto' // You can change the language of the editor here by setting
-            // the language code you need here. 'auto' means the route will try
-            // to use the language detected by the i18next language detector.
+            path.resolve(path.join(__dirname, '../h5p/core')),
+            path.resolve(path.join(__dirname, '../h5p/editor')),
+            {
+                handleErrors: true,
+                routeContentUserData: true,
+                routeFinishedData: true
+            },
+            'auto'
+        )
+    );
+
+    // Add content user data routes
+    server.use(
+        h5pEditor.config.contentUserDataUrl,
+        contentUserDataExpressRouter(
+            h5pEditor.contentUserDataManager,
+            h5pEditor.config
+        )
+    );
+
+    // Add finished data routes
+    server.use(
+        h5pEditor.config.setFinishedUrl,
+        finishedDataExpressRouter(
+            h5pEditor.contentUserDataManager,
+            h5pEditor.config
         )
     );
 

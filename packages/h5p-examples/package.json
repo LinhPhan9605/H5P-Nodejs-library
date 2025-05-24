@@ -26,6 +26,7 @@
         "@LinhPhan9605/h5p-express": "^10.0.4",
         "@LinhPhan9605/h5p-html-exporter": "^10.0.4",
         "@LinhPhan9605/h5p-mongos3": "^10.0.4",
+        "@LinhPhan9605/h5p-postgresql": "^1.0.0",
         "@LinhPhan9605/h5p-redis-lock": "^10.0.4",
         "@LinhPhan9605/h5p-server": "^10.0.4",
         "@LinhPhan9605/h5p-svg-sanitizer": "^10.0.4",

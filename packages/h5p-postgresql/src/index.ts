@@ -1,5 +1,7 @@
 import 'dotenv/config';
 import { Pool, PoolConfig, QueryResult, QueryResultRow } from 'pg';
+export { PostgresContentUserDataStorage } from './PostgresContentUserDataStorage';
+export { DatabaseConfig, defaultConfig } from './config';
 
 export class PostgresqlConnection {
   private pool: Pool;

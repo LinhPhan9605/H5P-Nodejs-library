@@ -10,6 +10,7 @@ import RedisLockProvider from '@LinhPhan9605/h5p-redis-lock';
 import { ILockProvider } from '@LinhPhan9605/h5p-server';
 import SvgSanitizer from '@LinhPhan9605/h5p-svg-sanitizer';
 import ClamAVScanner from '@LinhPhan9605/h5p-clamav-scanner';
+import { PostgresContentUserDataStorage, defaultConfig } from '@LinhPhan9605/h5p-postgresql';
 
 let mongoDb;
 async function getMongoDb(): Promise<Db> {
@@ -164,6 +165,9 @@ export default async function createH5PEditor(
             new H5P.fsImplementations.FileContentUserDataStorage(
                 localContentUserDataPath
             );
+    } else if (process.env.USERDATASTORAGE === 'postgres') {
+        // Initialize PostgreSQL storage with default config
+        contentUserDataStorage = new PostgresContentUserDataStorage(defaultConfig);
     }
 
     const h5pEditor = new H5P.H5PEditor(
@@ -240,6 +244,9 @@ export default async function createH5PEditor(
             h5pEditor.temporaryStorage as any
         ).setBucketLifecycleConfiguration(h5pEditor.config);
     }
+
+    // Set up content type cache
+    await h5pEditor.contentTypeCache.updateIfNecessary();
 
     return h5pEditor;
 }

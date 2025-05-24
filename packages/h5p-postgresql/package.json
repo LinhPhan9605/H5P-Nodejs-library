@@ -1,5 +1,5 @@
 {
-  "name": "h5p-postgresql",
+  "name": "@LinhPhan9605/h5p-postgresql",
   "version": "1.0.0",
   "description": "PostgreSQL connection package for H5P",
   "main": "dist/index.js",

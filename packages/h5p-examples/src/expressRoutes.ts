@@ -1,4 +1,5 @@
 import express from 'express';
+import bodyParser from 'body-parser';
 
 import * as H5P from '@LinhPhan9605/h5p-server';
 import {
@@ -22,6 +23,14 @@ export default function (
 ): express.Router {
     const router = express.Router();
     const contentService = new H5PContentService();
+
+    // Debug middleware to log all requests
+    router.use((req, res, next) => {
+        next();
+    });
+
+    // Add JSON body parser middleware
+    router.use(bodyParser.json());
 
     router.get(
         `${h5pEditor.config.playUrl}/:contentId`,
@@ -280,91 +289,6 @@ export default function (
         }
     });
 
-    // Route để submit điểm
-    router.post('/content/:contentId/score', async (req: IRequestWithUser, res) => {
-        try {
-            const { contentId } = req.params;
-            const {
-                score,
-                maxScore,
-                finished,
-                timeSpent,
-                interactionPattern,
-                answers
-            } = req.body;
-
-            if (typeof score !== 'number' || typeof maxScore !== 'number') {
-                res.status(400).send('Invalid score data').end();
-                return;
-            }
-
-            await contentService.saveScore(
-                contentId,
-                req.user,
-                score,
-                maxScore,
-                finished,
-                timeSpent,
-                interactionPattern,
-                answers
-            );
-
-            // Lấy thông tin điểm cao nhất
-            const highestScore = await contentService.getHighestScore(contentId, req.user.id);
-
-            res.json({
-                success: true,
-                message: 'Score saved successfully',
-                currentScore: {
-                    score,
-                    maxScore,
-                    percentage: (score / maxScore) * 100,
-                    timeSpent
-                },
-                highestScore
-            });
-        } catch (error) {
-            console.error('Error saving score:', error);
-            res.status(500).send(`Error saving score: ${error.message}`).end();
-        }
-    });
-
-    // Route để lấy điểm cao nhất
-    router.get('/content/:contentId/highscore', async (req: IRequestWithUser, res) => {
-        try {
-            const { contentId } = req.params;
-            const highestScore = await contentService.getHighestScore(contentId, req.user.id);
-            res.json(highestScore);
-        } catch (error) {
-            console.error('Error getting highest score:', error);
-            res.status(500).send(`Error getting highest score: ${error.message}`).end();
-        }
-    });
-
-    // Route để lấy lịch sử điểm
-    router.get('/content/:contentId/scores', async (req: IRequestWithUser, res) => {
-        try {
-            const { contentId } = req.params;
-            const scores = await contentService.getScoreHistory(contentId, req.user.id);
-            res.json(scores);
-        } catch (error) {
-            console.error('Error getting score history:', error);
-            res.status(500).send(`Error getting score history: ${error.message}`).end();
-        }
-    });
-
-    // Route để lấy thống kê điểm của content
-    router.get('/content/:contentId/stats', async (req: IRequestWithUser, res) => {
-        try {
-            const { contentId } = req.params;
-            const stats = await contentService.getContentScoreStats(contentId);
-            res.json(stats);
-        } catch (error) {
-            console.error('Error getting content stats:', error);
-            res.status(500).send(`Error getting content stats: ${error.message}`).end();
-        }
-    });
-
     router.get('/delete/:contentId', async (req: IRequestWithUser, res) => {
         try {
             // Xóa content từ H5P system
@@ -382,111 +306,6 @@ export default function (
                 `Error deleting content with id ${req.params.contentId}: ${error.message}<br/><a href="javascript:window.location=document.referrer">Go Back</a>`
             );
             res.status(500).end();
-        }
-    });
-
-    // H5P contentUserData route
-    router.post('/h5p/contentUserData/:contentId/:dataType/:subContentId?', async (req: IRequestWithUser, res) => {
-        try {
-            const { contentId, dataType, subContentId } = req.params;
-            const data = req.body;
-            
-            // Debug logs
-            console.log('=== Content User Data Save Request ===');
-            console.log('Path params:', { contentId, dataType, subContentId });
-            console.log('Request body:', data);
-            console.log('User:', req.user);
-
-            // Validate contentId
-            if (!contentId) {
-                throw new Error('Content ID is required');
-            }
-
-            // Lưu user data
-            await contentService.saveUserData(
-                contentId,
-                new User(req.user?.id || 'anonymous'),
-                dataType,
-                data,
-                subContentId ? parseInt(subContentId) : null
-            );
-            console.log('✅ User data saved successfully');
-
-            // Nếu là state data và có score, lưu điểm
-            if (dataType === 'state' && data.score !== undefined) {
-                await contentService.saveScore(
-                    contentId,
-                    new User(req.user?.id || 'anonymous'),
-                    data.score,
-                    data.maxScore || data.score,
-                    data.finished !== undefined ? data.finished : true,
-                    data.time || null,
-                    {
-                        interactions: data.interactions || [],
-                        answers: data.answers || [],
-                        attempts: data.attempts || 1
-                    },
-                    data.answers || null
-                );
-                console.log('✅ Score saved successfully');
-            }
-
-            res.json({
-                success: true
-            });
-        } catch (error) {
-            console.error('❌ Error saving content user data:', error);
-            res.status(500).json({
-                success: false,
-                error: error.message
-            });
-        }
-    });
-
-    // H5P contentUserData GET route
-    router.get('/h5p/contentUserData/:contentId/:dataType/:subContentId?', async (req: IRequestWithUser, res) => {
-        try {
-            const { contentId, dataType, subContentId } = req.params;
-            
-            // Debug logs
-            console.log('=== Content User Data Get Request ===');
-            console.log('Path params:', { contentId, dataType, subContentId });
-            console.log('User:', req.user);
-
-            const data = await contentService.getUserData(
-                contentId,
-                new User(req.user?.id || 'anonymous'),
-                dataType,
-                subContentId ? parseInt(subContentId) : null
-            );
-            console.log('Retrieved data:', data);
-
-            // If requesting state data, also get the highest score
-            if (dataType === 'state') {
-                const highestScore = await contentService.getHighestScore(contentId, req.user?.id || 'anonymous');
-                if (highestScore) {
-                    const response = {
-                        ...data,
-                        highestScore: {
-                            score: highestScore.score,
-                            maxScore: highestScore.max_score,
-                            finished: highestScore.finished,
-                            time: highestScore.time_spent
-                        }
-                    };
-                    console.log('Response with highest score:', response);
-                    res.json(response);
-                    return;
-                }
-            }
-
-            res.json(data || {});
-        } catch (error) {
-            console.error('❌ Error getting content user data:', error);
-            res.status(500).json({
-                success: false,
-                error: error.message
-            });
         }
     });
 
