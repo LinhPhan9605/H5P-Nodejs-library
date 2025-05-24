@@ -385,7 +385,7 @@ const start = async (): Promise<void> => {
         }
     );
 
-    const port = process.env.PORT || '8080';
+    const port = process.env.PORT || '3009';
 
     // For developer convenience we display a list of IPs, the server is running
     // on. You can then simply click on it in the terminal.

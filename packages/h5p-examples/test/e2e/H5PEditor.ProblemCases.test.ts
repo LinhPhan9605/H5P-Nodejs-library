@@ -4,7 +4,7 @@ import { readdirSync } from 'fs';
 import * as uploadHelpers from './helpers/upload';
 
 const problemCasesPath = path.resolve('test/data/problem-cases');
-const host = 'http://localhost:8080';
+const host = 'http://localhost:3009';
 
 describe('e2e test: upload content and save', () => {
     beforeAll(async () => {

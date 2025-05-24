@@ -57,4 +57,4 @@ To start the server-side-rendering example run
 npm start
 ```
 
-and open http://localhost:8080 in your browser.
+and open http://localhost:3009 in your browser.

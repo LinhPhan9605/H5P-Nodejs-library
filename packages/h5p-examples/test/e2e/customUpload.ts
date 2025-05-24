@@ -5,7 +5,7 @@ import { performance } from 'perf_hooks';
 
 import * as uploadHelpers from './helpers/upload';
 
-const host = 'http://localhost:8080';
+const host = 'http://localhost:3009';
 
 const errorFileStream = createWriteStream(path.resolve(process.argv[3]));
 

@@ -1830,7 +1830,7 @@ export interface IH5PConfig {
          */
         host: string;
         /**
-         * The port of the proxy, e.g. 8080.
+         * The port of the proxy, e.g. 3009.
          */
         port: number;
         /**
