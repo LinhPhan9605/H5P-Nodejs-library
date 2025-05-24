@@ -1,0 +1,30 @@
+{
+  "name": "h5p-postgresql",
+  "version": "1.0.0",
+  "description": "PostgreSQL connection package for H5P",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test-connection": "ts-node src/test-connection.ts"
+  },
+  "keywords": [
+    "h5p",
+    "postgresql",
+    "database"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/pg": "^8.11.0",
+    "dotenv": "^16.5.0",
+    "pg": "^8.11.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.0.0"
+  }
+}
