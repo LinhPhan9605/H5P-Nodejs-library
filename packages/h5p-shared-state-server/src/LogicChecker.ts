@@ -86,7 +86,6 @@ const evaluateLogicCheckRec = (
                 JSONPath({
                     path: (check as ILogicalOperator).$defined.$query,
                     json: obj,
-                    preventEval: true,
                     wrap: false
                 }) !== undefined
             );
@@ -110,7 +109,6 @@ const evaluateLogicCheckRec = (
         const evaluatedPath = JSONPath({
             path: property,
             json: obj,
-            preventEval: true,
             wrap: false
         });
 
@@ -144,7 +142,6 @@ const evaluateLogicCheckRec = (
                 evaluatedArgument = JSONPath({
                     path: argumentValue as string,
                     json: obj,
-                    preventEval: true,
                     wrap: false
                 });
                 return logErrorAndReturn(
@@ -161,7 +158,6 @@ const evaluateLogicCheckRec = (
                 evaluatedArgument = JSONPath({
                     path: (argumentValue as any).$query,
                     json: obj,
-                    preventEval: true,
                     wrap: false
                 });
             } else {
