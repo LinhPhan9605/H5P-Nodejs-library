@@ -30,6 +30,15 @@ export interface ContentUserData {
     userId: string;
 }
 
+export interface ContentScore {
+    contentId: string;
+    score: number;
+    maxScore: number;
+    opened: number;
+    finished: number;
+    userId: string;
+}
+
 export class LmsService {
     public async getContentUserData(
         contentId: string,
@@ -132,6 +141,40 @@ export class LmsService {
 
         const apiUrl = `${process.env.VITE_LMS_API}/h5p/content-user-data`;
         console.log('Attempting to call API URL:', apiUrl);
+
+        try {
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Token: process.env.VITE_LMS_API_TOKEN || ''
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (!response.ok) {
+                throw new Error(`Failed to post data: ${response.statusText}`);
+            }
+        } catch (error) {
+            console.error('Error in createOrUpdateContentUserData:', error);
+            throw error;
+        }
+    }
+
+    public async createOrUpdateContentScore(
+        data: ContentScore
+    ): Promise<void> {
+        if (!process.env.VITE_LMS_API) {
+            throw new Error(
+                'VITE_LMS_API environment variable is not defined. Current working directory: ' +
+                    process.cwd()
+            );
+        }
+
+        const apiUrl = `${process.env.VITE_LMS_API}/h5p/content-score`;
+        console.log('Attempting to call API URL:', apiUrl);
+
+        console.log(data)
 
         try {
             const response = await fetch(apiUrl, {

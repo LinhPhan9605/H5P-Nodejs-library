@@ -304,13 +304,13 @@ export default class ContentUserDataManager {
             );
         }
 
-        await this.contentUserDataStorage.createOrUpdateFinishedData({
+        const contentService = new LmsService();
+        await contentService.createOrUpdateContentScore({
             contentId,
             score,
             maxScore,
-            openedTimestamp,
-            finishedTimestamp,
-            completionTime,
+            opened: openedTimestamp,
+            finished: finishedTimestamp,
             userId: actingUser.id
         });
     }
