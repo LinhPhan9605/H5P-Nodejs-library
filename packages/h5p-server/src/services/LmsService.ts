@@ -1,0 +1,98 @@
+import dotenv from 'dotenv';
+import path from 'path';
+import {
+    IContentUserData,
+} from './../types';
+
+// Try loading from different possible locations
+const envPaths = [
+    path.resolve(process.cwd(), '.env'),
+    path.resolve(process.cwd(), '../../.env'),
+    path.resolve(__dirname, '../../.env')
+];
+
+for (const envPath of envPaths) {
+    dotenv.config({ path: envPath });
+}
+
+console.log('Process CWD:', process.cwd());
+console.log('__dirname:', __dirname);
+console.log('Environment variables:', {
+    VITE_LMS_API: process.env.VITE_LMS_API,
+    VITE_LMS_API_TOKEN: process.env.VITE_LMS_API_TOKEN
+});
+
+export interface ContentUserData {
+    contentId: string;
+    contextId: string;
+    dataType: string;
+    invalidate: boolean;
+    preload: boolean;
+    subContentId: string;
+    userState: object;
+    userId: string;
+}
+
+export class LmsService {
+    public async getContentUserData(
+        data: ContentUserData
+    ): Promise<IContentUserData> {
+        if (!process.env.VITE_LMS_API) {
+            throw new Error(
+                'VITE_LMS_API environment variable is not defined.'
+            );
+        }
+
+        const apiUrl = `${process.env.VITE_LMS_API}/h5p/content-user-data`;
+        console.log('Calling LMS API:', apiUrl);
+
+        const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Token: process.env.VITE_LMS_API_TOKEN || ''
+            },
+            body: JSON.stringify(data)
+        });
+
+        if (!response.ok) {
+            throw new Error(
+                `Failed to get content user data: ${response.statusText}`
+            );
+        }
+
+        return (await response.json()) as IContentUserData;
+    }
+
+    public async createOrUpdateContentUserData(
+        data: ContentUserData
+    ): Promise<void> {
+        if (!process.env.VITE_LMS_API) {
+            throw new Error(
+                'VITE_LMS_API environment variable is not defined. Current working directory: ' +
+                    process.cwd()
+            );
+        }
+
+        const apiUrl = `${process.env.VITE_LMS_API}/h5p/content-user-data`;
+        console.log('Attempting to call API URL:', apiUrl);
+
+        try {
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Token: process.env.VITE_LMS_API_TOKEN || ''
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (!response.ok) {
+                throw new Error(`Failed to post data: ${response.statusText}`);
+            }
+        } catch (error) {
+            console.error('Error in createOrUpdateContentUserData:', error);
+            throw error;
+        }
+    }
+}

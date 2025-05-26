@@ -41,6 +41,9 @@ export default class ContentUserDataController {
             typeof req.query.asUserId === 'string'
                 ? req.query.asUserId
                 : undefined;
+        
+
+        console.log("getContentUserData")
 
         const result = await this.contentUserDataManager.getContentUserData(
             contentId,
@@ -102,6 +105,8 @@ export default class ContentUserDataController {
         }
 
         const { user, body } = req;
+
+        console.log("createOrUpdateContentUserData")
 
         await this.contentUserDataManager.createOrUpdateContentUserData(
             contentId,

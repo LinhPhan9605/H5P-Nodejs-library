@@ -9,6 +9,7 @@ import {
 } from './types';
 import Logger from './helpers/Logger';
 import H5pError from './helpers/H5pError';
+import { LmsService } from './services/LmsService';
 
 const log = new Logger('ContentUserDataManager');
 
@@ -180,13 +181,29 @@ export default class ContentUserDataManager {
             );
         }
 
-        return this.contentUserDataStorage.getContentUserData(
+        const data = await this.contentUserDataStorage.getContentUserData(
             contentId,
             dataType,
             subContentId,
             asUserId ?? actingUser.id,
             contextId
-        );
+        )
+
+        console.log(data)
+
+        return data
+
+        const contentService = new LmsService();
+        return await contentService.getContentUserData({
+            contentId,
+            dataType,
+            subContentId,
+            userId: asUserId ?? actingUser.id,
+            contextId,
+            invalidate: false,
+            preload: false,
+            userState: null
+        });
     }
 
     /**
@@ -380,6 +397,51 @@ export default class ContentUserDataManager {
                 {},
                 403
             );
+        }
+
+        console.log(
+            'this.contentUserDataStorage.createOrUpdateContentUserData'
+        );
+
+        // Lưu content LMS
+        try {
+            let parsedUserState: Record<string, any> = {};
+
+            if (typeof userState === 'string') {
+                try {
+                    parsedUserState = JSON.parse(userState);
+                } catch {
+                    console.warn(
+                        'Invalid JSON string for userState, use empty object'
+                    );
+                    parsedUserState = {};
+                }
+            } else {
+                parsedUserState = userState;
+            }
+
+            const userData = {
+                contentId,
+                contextId,
+                dataType,
+                invalidate,
+                preload,
+                subContentId,
+                userState: parsedUserState,
+                userId: asUserId ?? actingUser.id
+            };
+
+            const contentService = new LmsService();
+            await contentService.createOrUpdateContentUserData(userData);
+            console.log(
+                'Successfully create or update content user data to PostgreSQL with extended information'
+            );
+        } catch (dbError) {
+            console.error(
+                'Failed to create or update content user data to PostgreSQL:',
+                dbError
+            );
+            throw dbError;
         }
 
         if (this.contentUserDataStorage) {
