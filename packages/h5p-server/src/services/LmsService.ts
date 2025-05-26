@@ -1,8 +1,5 @@
 import dotenv from 'dotenv';
 import path from 'path';
-import {
-    IContentUserData,
-} from './../types';
 
 // Try loading from different possible locations
 const envPaths = [
@@ -35,24 +32,27 @@ export interface ContentUserData {
 
 export class LmsService {
     public async getContentUserData(
-        data: ContentUserData
-    ): Promise<IContentUserData> {
+        contentId: string,
+        dataType: string,
+        subContentId: string,
+        userId: string,
+        contextId?: string
+    ): Promise<any> {
         if (!process.env.VITE_LMS_API) {
             throw new Error(
                 'VITE_LMS_API environment variable is not defined.'
             );
         }
 
-        const apiUrl = `${process.env.VITE_LMS_API}/h5p/content-user-data`;
+        const apiUrl = `${process.env.VITE_LMS_API}/h5p/content-data/${contentId}/${userId}`;
         console.log('Calling LMS API:', apiUrl);
 
         const response = await fetch(apiUrl, {
-            method: 'POST',
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
                 Token: process.env.VITE_LMS_API_TOKEN || ''
-            },
-            body: JSON.stringify(data)
+            }
         });
 
         if (!response.ok) {
@@ -61,7 +61,63 @@ export class LmsService {
             );
         }
 
-        return (await response.json()) as IContentUserData;
+        const result = await response.json();
+
+        const userData: ContentUserData = {
+            contentId,
+            contextId: contextId || '',
+            dataType,
+            invalidate: result.invalidate || false,
+            preload: result.preload || false,
+            subContentId,
+            userState: result.user_state || '',
+            userId
+        };
+
+        return userData;
+    }
+
+    public async getContentUserDataByContentIdAndUser(
+        contentId: string,
+        userId: string,
+        contextId?: string
+    ): Promise<any> {
+        if (!process.env.VITE_LMS_API) {
+            throw new Error(
+                'VITE_LMS_API environment variable is not defined.'
+            );
+        }
+
+        const apiUrl = `${process.env.VITE_LMS_API}/h5p/content-user-data/${contentId}/${userId}/context`;
+        console.log('Fetching content user data from LMS API:', apiUrl);
+
+        try {
+            const response = await fetch(apiUrl, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Token: process.env.VITE_LMS_API_TOKEN || ''
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error(
+                    `Failed to get content user data: ${response.statusText}`
+                );
+            }
+
+            const result = await response.json();
+
+            console.log(result)
+
+            return result.state;
+        } catch (error) {
+            console.error(
+                'Error in getContentUserDataByContentIdAndUser:',
+                error
+            );
+            throw error;
+        }
     }
 
     public async createOrUpdateContentUserData(

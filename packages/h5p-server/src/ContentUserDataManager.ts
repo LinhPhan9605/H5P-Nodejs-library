@@ -181,29 +181,18 @@ export default class ContentUserDataManager {
             );
         }
 
-        const data = await this.contentUserDataStorage.getContentUserData(
+        const contentService = new LmsService();
+        const data = await contentService.getContentUserData(
             contentId,
             dataType,
             subContentId,
             asUserId ?? actingUser.id,
             contextId
-        )
+        );
 
-        console.log(data)
+        console.log(data);
 
-        return data
-
-        const contentService = new LmsService();
-        return await contentService.getContentUserData({
-            contentId,
-            dataType,
-            subContentId,
-            userId: asUserId ?? actingUser.id,
-            contextId,
-            invalidate: false,
-            preload: false,
-            userState: null
-        });
+        return data;
     }
 
     /**
@@ -236,14 +225,14 @@ export default class ContentUserDataManager {
             `Generating contentUserDataIntegration for user with id ${actingUser.id}, contentId ${contentId} and contextId ${contextId}.`
         );
 
-        if (
-            !(await this.permissionSystem.checkForUserData(
-                actingUser,
-                UserDataPermission.ViewState,
-                contentId,
-                asUserId ?? actingUser.id
-            ))
-        ) {
+        const hasPermission = await this.permissionSystem.checkForUserData(
+            actingUser,
+            UserDataPermission.ViewState,
+            contentId,
+            asUserId ?? actingUser.id
+        );
+
+        if (!hasPermission) {
             log.error(
                 `User tried viewing user content state without proper permissions.`
             );
@@ -254,32 +243,18 @@ export default class ContentUserDataManager {
             );
         }
 
-        let states =
-            await this.contentUserDataStorage.getContentUserDataByContentIdAndUser(
-                contentId,
-                asUserId ?? actingUser.id,
-                contextId
-            );
+        const contentService = new LmsService();
+        let states = await contentService.getContentUserDataByContentIdAndUser(
+            contentId,
+            asUserId ?? actingUser.id,
+            contextId
+        );
 
-        if (!states) {
+        if (!states || !Array.isArray(states)) {
             return undefined;
         }
 
-        states = states.filter((s) => s.preload === true);
-
-        const sortedStates = states.sort(
-            (a, b) => Number(a.subContentId) - Number(b.subContentId)
-        );
-
-        const mappedStates = sortedStates
-            // filter removes states where preload is set to false
-            .filter((state) => state.preload)
-            // maps the state to an object where the key is the dataType and the userState is the value
-            .map((state) => ({
-                [state.dataType]: state.userState
-            }));
-
-        return mappedStates;
+        return states;
     }
 
     /**
@@ -399,11 +374,6 @@ export default class ContentUserDataManager {
             );
         }
 
-        console.log(
-            'this.contentUserDataStorage.createOrUpdateContentUserData'
-        );
-
-        // Lưu content LMS
         try {
             let parsedUserState: Record<string, any> = {};
 
@@ -442,19 +412,6 @@ export default class ContentUserDataManager {
                 dbError
             );
             throw dbError;
-        }
-
-        if (this.contentUserDataStorage) {
-            return this.contentUserDataStorage.createOrUpdateContentUserData({
-                contentId,
-                contextId,
-                dataType,
-                invalidate,
-                preload,
-                subContentId,
-                userState,
-                userId: asUserId ?? actingUser.id
-            });
         }
     }
 
