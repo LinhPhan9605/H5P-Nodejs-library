@@ -1,4 +1,4 @@
-import { LmsService } from '../../../h5p-server/src/services/LmsService';
+import { LmsService } from '@LinhPhan9605/h5p-server/src/services/LmsService';
 
 export class H5PContentService {
     async createOrUpdateContent(

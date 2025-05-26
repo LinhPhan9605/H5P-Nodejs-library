@@ -92,6 +92,7 @@ export default function (
     router.get(
         '/new',
         async (req: IRequestWithLanguage & IRequestWithUser, res) => {
+            console.log("get new content")
             const page = await h5pEditor.render(
                 undefined,
                 languageOverride === 'auto'
