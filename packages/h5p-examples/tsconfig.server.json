@@ -1,17 +1,9 @@
 {
     "extends": "../../tsconfig.build.json",
+    "include": ["src/**/*.ts"],
+    "exclude": ["src/client/**"],
     "compilerOptions": {
-        "outDir": "build",
-        "rootDir": "src",
-        "baseUrl": ".",
-        "jsx": "react",
-        "paths": {
-            "@LinhPhan9605/h5p-postgresql": ["../h5p-postgresql/src"],
-            "@LinhPhan9605/h5p-postgresql/*": ["../h5p-postgresql/src/*"]
-        }
-    },
-    "include": ["src/**/*"],
-    "references": [
-        { "path": "../h5p-postgresql" }
-    ]
+        "declaration": true,
+        "outDir": "./build"
+    }
 }

@@ -44,6 +44,7 @@
     ],
     "dependencies": {
         "@LinhPhan9605/h5p-server": "^10.0.4",
+        "clean-css": "^4.2.4",
         "jsonpath-plus": "10.3.0",
         "mime-types": "^2.1.35",
         "postcss": "^8.4.23",

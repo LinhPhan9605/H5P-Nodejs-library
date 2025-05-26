@@ -15,7 +15,6 @@
         "test:server+upload": "start-server-and-test start http://localhost:3009 test:upload",
         "test:upload": "npx ts-node test/e2e/customUpload.ts ${H5P_FILES} ${ERROR_FILE}",
         "test": "echo \"Error: no test specified\" && exit 1",
-        "test-db": "ts-node src/test-db.ts",
         "postinstall": "mkdir -p public && cp ../../node_modules/requirejs/require.js ./public/require.js && cp -R ../../node_modules/bootstrap/dist/css/bootstrap.min.css ./public/bootstrap.min.css && cp -R ../../node_modules/@fortawesome/fontawesome-free ./public/ && cp -R ../../node_modules/react ./public/ && cp -R ../../node_modules/react-dom ./public/"
     },
     "author": "",
@@ -26,7 +25,6 @@
         "@LinhPhan9605/h5p-express": "^10.0.4",
         "@LinhPhan9605/h5p-html-exporter": "^10.0.4",
         "@LinhPhan9605/h5p-mongos3": "^10.0.4",
-        "@LinhPhan9605/h5p-postgresql": "^1.0.0",
         "@LinhPhan9605/h5p-redis-lock": "^10.0.4",
         "@LinhPhan9605/h5p-server": "^10.0.4",
         "@LinhPhan9605/h5p-svg-sanitizer": "^10.0.4",

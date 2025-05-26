@@ -16,6 +16,7 @@ import {
 import Logger from './helpers/Logger';
 import H5pError from './helpers/H5pError';
 import ContentUserDataManager from './ContentUserDataManager';
+import { LmsService } from './services/LmsService';
 
 const log = new Logger('ContentManager');
 

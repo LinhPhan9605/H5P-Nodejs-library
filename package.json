@@ -60,31 +60,7 @@
     "release": {
         "branch": "release"
     },
-    "contributors": [
-        {
-            "name": "Sebastian Rettig",
-            "email": "serettig@posteo.de"
-        },
-        {
-            "name": "Nikolas Martens"
-        },
-        {
-            "name": "Jan Philip Schellenberg",
-            "email": "jps@Lumi.education",
-            "url": "http://Lumi.education"
-        },
-        {
-            "name": "Bo Biene",
-            "email": "biene@inray.de",
-            "url": "https://www.qm-team.de/mymento-kursportal/"
-        },
-        {
-            "name": "jdavidavendano"
-        },
-        {
-            "name": "jankapunkt"
-        }
-    ],
+    "contributors": [],
     "devDependencies": {
         "@commitlint/config-conventional": "19.8.0",
         "@eslint/js": "^9.17.0",
@@ -125,7 +101,6 @@
         "packages/h5p-shared-state-server",
         "packages/h5p-svg-sanitizer",
         "packages/h5p-clamav-scanner",
-        "packages/h5p-examples",
-        "packages/h5p-postgresql"
+        "packages/h5p-examples"
     ]
 }

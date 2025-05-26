@@ -106,8 +106,6 @@ export default class ContentUserDataController {
 
         const { user, body } = req;
 
-        console.log("createOrUpdateContentUserData")
-
         await this.contentUserDataManager.createOrUpdateContentUserData(
             contentId,
             dataType,

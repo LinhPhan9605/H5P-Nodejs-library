@@ -24,9 +24,12 @@
         }
     ],
     "dependencies": {
+        "@asamuzakjp/css-color": "^2.8.3",
         "@LinhPhan9605/h5p-server": "^10.0.4",
         "dompurify": "^3.2.3",
-        "jsdom": "^26.0.0"
+        "jsdom": "^26.0.0",
+        "tldts": "^6.1.86",
+        "xmlchars": "^2.2.0"
     },
     "main": "./build/SvgSanitizer.js",
     "types": "./build/SvgSanitizer.d.ts",
