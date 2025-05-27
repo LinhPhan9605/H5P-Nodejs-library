@@ -35,14 +35,15 @@ class LmsService {
                 body: JSON.stringify(body)
             });
             if (!response.ok) {
-                console.error(`Failed to post data: ${response.statusText}`);
-                return null;
+                const errorMessage = `Failed to api: ${response.status} ${response.statusText}`;
+                console.error(errorMessage);
+                throw new Error(errorMessage);
             }
             console.log('Content created/updated successfully');
         }
         catch (error) {
             console.error('Error in createOrUpdateContent:', error);
-            return null;
+            throw new Error(error);
         }
     }
     async getContentUserData(contentId, dataType, subContentId, userId, contextId) {
@@ -55,8 +56,9 @@ class LmsService {
             }
         });
         if (!response.ok) {
-            console.error(`Failed to post data: ${response.statusText}`);
-            return null;
+                const errorMessage = `Failed to api: ${response.status} ${response.statusText}`;
+                console.error(errorMessage);
+                throw new Error(errorMessage);
         }
         const result = await response.json();
         const userData = {
@@ -82,15 +84,16 @@ class LmsService {
                 }
             });
             if (!response.ok) {
-                console.error(`Failed to post data: ${response.statusText}`);
-                return null;
+                const errorMessage = `Failed to api: ${response.status} ${response.statusText}`;
+                console.error(errorMessage);
+                throw new Error(errorMessage);
             }
             const result = await response.json();
             return result.state;
         }
         catch (error) {
             console.error('Error in getContentUserDataByContentIdAndUser:', error);
-            return null;
+            throw new Error(error);
         }
     }
     async createOrUpdateContentUserData(data) {
@@ -105,13 +108,14 @@ class LmsService {
                 body: JSON.stringify(data)
             });
             if (!response.ok) {
-                console.error(`Failed to post data: ${response.statusText}`);
-                return null;
+                const errorMessage = `Failed to api: ${response.status} ${response.statusText}`;
+                console.error(errorMessage);
+                throw new Error(errorMessage);
             }
         }
         catch (error) {
             console.error('Error in createOrUpdateContentUserData:', error);
-            return null;
+            throw new Error(error);
         }
     }
     async createOrUpdateContentScore(data) {
@@ -126,13 +130,14 @@ class LmsService {
                 body: JSON.stringify(data)
             });
             if (!response.ok) {
-                console.error(`Failed to post data: ${response.statusText}`);
-                return null;
+                const errorMessage = `Failed to api: ${response.status} ${response.statusText}`;
+                console.error(errorMessage);
+                throw new Error(errorMessage);
             }
         }
         catch (error) {
-            console.error('Error in createOrUpdateContentUserData:', error);
-            return null;
+            console.error('Error in createOrUpdateContentScore:', error);
+            throw new Error(error);
         }
     }
 
@@ -147,8 +152,11 @@ class LmsService {
                 }
             });
             if (!response.ok) {
+                console.log(token)
                 console.log(`Failed to get data: ${response.statusText}`);
-                return null;
+                return {
+
+                };
             }
 
             const result = await response.json();

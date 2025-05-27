@@ -575,6 +575,11 @@ export interface IUser {
      * Specifies type of user. Possible values other than 'local' are unknown as of this time.
      */
     type: 'local' | string;
+
+    /**
+     * The token of the user.
+     */
+    token?: string;
 }
 
 /**

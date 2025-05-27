@@ -1,6 +1,8 @@
 import dotenv from 'dotenv';
 import path from 'path';
 
+import { UserService } from './UserService';
+
 // Try loading from different possible locations
 const envPaths = [
     path.resolve(process.cwd(), '.env'),
@@ -37,39 +39,35 @@ export class LmsService {
         contentId: string,
         title: string,
         parameters: any,
-        metadata: any = {}
+        metadata: any = {},
     ): Promise<void> {
         const apiUrl = `${process.env.VITE_LMS_API}/h5p/content`;
-        console.log('Calling LMS API:', apiUrl);
-
-        const body = {
-            contentId,
-            title,
-            parameters,
-            metadata
-        };
-
-        console.log(body)
 
         try {
+            const user = UserService.getUser();
+
             const response = await fetch(apiUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    Token: process.env.VITE_LMS_API_TOKEN || ''
+                    Token: user.token || ''
                 },
-                body: JSON.stringify(body)
+                body: JSON.stringify({
+                    contentId,
+                    title,
+                    parameters,
+                    metadata
+                })
             });
 
             if (!response.ok) {
-                console.log(`Failed api: ${response.statusText}`);
-                return null;
+                const errorMessage = `Failed createOrUpdateContent to api: ${response.status} ${response.statusText}`;
+                console.error(errorMessage);
+                throw new Error(errorMessage);
             }
-
-            console.log('Content created/updated successfully');
         } catch (error) {
-            console.error('Error api:', error);
-            return null;
+            console.error('Error in createOrUpdateContent:', error);
+            throw new Error(error);
         }
     }
 
@@ -81,18 +79,20 @@ export class LmsService {
         contextId?: string
     ): Promise<any> {
         const apiUrl = `${process.env.VITE_LMS_API}/h5p/content-data/${contentId}/${userId}`;
+        const user = UserService.getUser();
 
         const response = await fetch(apiUrl, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                Token: process.env.VITE_LMS_API_TOKEN || ''
+                Token: user.token || ''
             }
         });
 
         if (!response.ok) {
-            console.log(`Failed api: ${response.statusText}`);
-            return null;
+            const errorMessage = `Failed getContentUserData to api: ${response.status} ${response.statusText}`;
+            console.error(errorMessage);
+            throw new Error(errorMessage);
         }
 
         const result = await response.json();
@@ -117,40 +117,36 @@ export class LmsService {
         contextId?: string
     ): Promise<any> {
         const apiUrl = `${process.env.VITE_LMS_API}/h5p/content-user-data/${contentId}/${userId}/context`;
+        const user = UserService.getUser();
 
         try {
             const response = await fetch(apiUrl, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    Token: process.env.VITE_LMS_API_TOKEN || ''
+                    Token: user.token || ''
                 }
             });
 
             if (!response.ok) {
-                console.log(`Failed api: ${response.statusText}`);
-                return null;
+                const errorMessage = `Failed getContentUserDataByContentIdAndUser to api: ${response.status} ${response.statusText}`;
+                console.error(errorMessage);
+                throw new Error(errorMessage);
             }
 
             const result = await response.json();
 
             return result.state;
         } catch (error) {
-            console.error('Error api:', error);
-            return null;
+            console.error('Error in getContentUserDataByContentIdAndUser:', error);
+            throw new Error(error);
         }
     }
 
     public async createOrUpdateContentUserData(
         data: ContentUserData
     ): Promise<void> {
-        if (!process.env.VITE_LMS_API) {
-            throw new Error(
-                'VITE_LMS_API environment variable is not defined. Current working directory: ' +
-                    process.cwd()
-            );
-        }
-
+        const user = UserService.getUser();
         const apiUrl = `${process.env.VITE_LMS_API}/h5p/content-user-data`;
 
         try {
@@ -158,44 +154,48 @@ export class LmsService {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    Token: process.env.VITE_LMS_API_TOKEN || ''
+                    Token: user.token || ''
                 },
                 body: JSON.stringify(data)
             });
 
             if (!response.ok) {
-                console.log(`Failed api: ${response.statusText}`);
-                return null;
+                const errorMessage = `Failed createOrUpdateContentUserData to api: ${response.status} ${response.statusText}`;
+                console.error(errorMessage);
+                throw new Error(errorMessage);
             }
         } catch (error) {
-            console.error('Error api:', error);
-            return null;
+            console.error('Error in createOrUpdateContentUserData:', error);
+            throw new Error(error);
         }
     }
 
     public async createOrUpdateContentScore(data: ContentScore): Promise<void> {
         const apiUrl = `${process.env.VITE_LMS_API}/h5p/content-score`;
+        const user = UserService.getUser();
 
         try {
             const response = await fetch(apiUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    Token: process.env.VITE_LMS_API_TOKEN || ''
+                    Token: user.token || ''
                 },
                 body: JSON.stringify(data)
             });
 
             if (!response.ok) {
-                console.log(`Failed api: ${response.statusText}`);
-                return null;
+                const errorMessage = `Failed createOrUpdateContentScore to api: ${response.status} ${response.statusText}`;
+                console.error(errorMessage);
+                throw new Error(errorMessage);
             }
         } catch (error) {
-            console.error('Error api:', error);
-            return null;
+            console.error('Error in createOrUpdateContentScore:', error);
+            throw new Error(error);
         }
     }
-    public async getUserFromToken(token) {
+
+    public async getUserFromToken(token: string) {
         const apiUrl = `${process.env.VITE_LMS_API}/profile`;
         try {
             const response = await fetch(apiUrl, {
@@ -206,21 +206,24 @@ export class LmsService {
                 }
             });
             if (!response.ok) {
-                console.log(`Failed api: ${response.statusText}`);
-                return null;
+                const errorMessage = `Failed getUserFromToken to api: ${response.status} ${response.statusText}`;
+                console.error(errorMessage);
+                throw new Error(errorMessage);
             }
 
             const result = await response.json();
+
+            console.log(result)
             const userData = {
-                id: result.id,
-                name: result.name,
-                email: result.email,
+                id: result.data.id,
+                name: result.data.name,
+                email: result.data.email,
             };
             return userData;
         }
         catch (error) {
-            console.error('Error api:', error);
-            return null;
+            console.error('Error in getUserFromToken:', error);
+            throw new Error(error);
         }
     }
 }

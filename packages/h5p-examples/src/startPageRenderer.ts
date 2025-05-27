@@ -25,15 +25,13 @@ export default function render(
             <title>H5P NodeJs Demo</title>
         </head>
         <body>
-            <div class="container">
-                <h1>H5P NodeJs Demo</h1>
-                <div class="alert alert-warning">This demo is for debugging and demonstration purposes only and not suitable for production use!</div>                
+            <div class="container">        
                 <h2>
                     <span class="fa fa-file"></span> Existing content
                 </h2>
                 <a class="btn btn-primary my-2" href="${
                     editor.config.baseUrl
-                }/new"><span class="fa fa-plus-circle m-2"></span>Create new content</a>
+                }/new?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3Niwicm9sZV9pZCI6MSwiZXhwIjoxNzQ4ODMyODc5LCJuYmYiOjE3NDgyMjgwNzksImlhdCI6MTc0ODIyODA3OX0.G52xekyFj9Lvx3kq09Pfibzs0S-HiIhrxOFei0glhjk"><span class="fa fa-plus-circle m-2"></span>Create new content</a>
                 <div class="list-group">
                 ${contentObjects
                     .map(

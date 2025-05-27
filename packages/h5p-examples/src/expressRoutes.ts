@@ -92,11 +92,16 @@ export default function (
     router.get(
         '/new',
         async (req: IRequestWithLanguage & IRequestWithUser, res) => {
-            console.log("get new content")
-            console.log(req.user)
+
             const token = req.query.token as string;
 
+            console.log("token")
+            console.log(token)
+
             const user = await contentService.getUserFromToken(token)
+            
+            console.log("get new content")
+            console.log(user)
 
             const page = await h5pEditor.render(
                 undefined,
@@ -148,6 +153,11 @@ export default function (
             const metadata = req.body.params.metadata || {};
             const params = req.body.params.params || {};
 
+            const user = await contentService.getUserFormStorage();
+
+            console.log("new content - user")
+            console.log(user)
+
             const now = new Date().toISOString();
             const extendedMetadata = {
                 ...metadata,
@@ -162,7 +172,7 @@ export default function (
                     {
                         date: now,
                         type: 'create',
-                        userId: req.user.id || 'anonymous',
+                        userId: user.id || 'anonymous',
                         action: 'Content created'
                     }
                 ]
@@ -175,7 +185,7 @@ export default function (
                     params,
                     metadata,
                     req.body.library,
-                    req.user
+                    user
                 );
                 console.log(
                     'Successfully saved content to H5P system:',
