@@ -1,4 +1,5 @@
 import { LmsService } from '@LinhPhan9605/h5p-server/src/services/LmsService';
+import { IUser } from '@LinhPhan9605/h5p-server/src/types';
 
 export class H5PContentService {
     async createOrUpdateContent(
@@ -7,8 +8,6 @@ export class H5PContentService {
         parameters: any,
         metadata: any = {}
     ): Promise<void> {
-
-        console.log("H5PContentService createOrUpdateContent")
         const contentService = new LmsService();
         await contentService.createOrUpdateContent(
             contentId,
@@ -16,5 +15,21 @@ export class H5PContentService {
             parameters,
             metadata
         );
+    }
+
+    async getUserFromToken(
+        token: string
+    ): Promise<IUser> {
+        const contentService = new LmsService();
+        const rawUser = await contentService.getUserFromToken(token);
+
+        const user: IUser = {
+            email: rawUser.email,
+            id: rawUser.id.toString(),
+            name: rawUser.name,
+            type: 'local',
+        };
+
+        return user;
     }
 }

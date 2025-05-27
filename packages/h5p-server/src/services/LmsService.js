@@ -17,11 +17,7 @@ for (const envPath of envPaths) {
 }
 class LmsService {
     async createOrUpdateContent(contentId, title, parameters, metadata = {}) {
-        if (!process.env.VITE_LMS_API) {
-            throw new Error('VITE_LMS_API environment variable is not defined.');
-        }
         const apiUrl = `${process.env.VITE_LMS_API}/h5p/content`;
-        console.log('Calling LMS API:', apiUrl);
         const body = {
             contentId,
             title,
@@ -29,30 +25,27 @@ class LmsService {
             metadata
         };
         console.log(body);
-        // try {
-        //     const response = await fetch(apiUrl, {
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //             Token: process.env.VITE_LMS_API_TOKEN || ''
-        //         },
-        //         body: JSON.stringify(body)
-        //     });
-        //     if (!response.ok) {
-        //         const errorText = await response.text();
-        //         throw new Error(`Failed to create/update content: ${response.status} ${errorText}`);
-        //     }
-        //     console.log('Content created/updated successfully');
-        // }
-        // catch (error) {
-        //     console.error('Error in createOrUpdateContent:', error);
-        //     throw error;
-        // }
+        try {
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Token: process.env.VITE_LMS_API_TOKEN || ''
+                },
+                body: JSON.stringify(body)
+            });
+            if (!response.ok) {
+                console.error(`Failed to post data: ${response.statusText}`);
+                return null;
+            }
+            console.log('Content created/updated successfully');
+        }
+        catch (error) {
+            console.error('Error in createOrUpdateContent:', error);
+            return null;
+        }
     }
     async getContentUserData(contentId, dataType, subContentId, userId, contextId) {
-        if (!process.env.VITE_LMS_API) {
-            throw new Error('VITE_LMS_API environment variable is not defined.');
-        }
         const apiUrl = `${process.env.VITE_LMS_API}/h5p/content-data/${contentId}/${userId}`;
         const response = await fetch(apiUrl, {
             method: 'GET',
@@ -62,7 +55,8 @@ class LmsService {
             }
         });
         if (!response.ok) {
-            throw new Error(`Failed to get content user data: ${response.statusText}`);
+            console.error(`Failed to post data: ${response.statusText}`);
+            return null;
         }
         const result = await response.json();
         const userData = {
@@ -78,9 +72,6 @@ class LmsService {
         return userData;
     }
     async getContentUserDataByContentIdAndUser(contentId, userId, contextId) {
-        if (!process.env.VITE_LMS_API) {
-            throw new Error('VITE_LMS_API environment variable is not defined.');
-        }
         const apiUrl = `${process.env.VITE_LMS_API}/h5p/content-user-data/${contentId}/${userId}/context`;
         try {
             const response = await fetch(apiUrl, {
@@ -91,21 +82,18 @@ class LmsService {
                 }
             });
             if (!response.ok) {
-                throw new Error(`Failed to get content user data: ${response.statusText}`);
+                console.error(`Failed to post data: ${response.statusText}`);
+                return null;
             }
             const result = await response.json();
             return result.state;
         }
         catch (error) {
             console.error('Error in getContentUserDataByContentIdAndUser:', error);
-            throw error;
+            return null;
         }
     }
     async createOrUpdateContentUserData(data) {
-        if (!process.env.VITE_LMS_API) {
-            throw new Error('VITE_LMS_API environment variable is not defined. Current working directory: ' +
-                process.cwd());
-        }
         const apiUrl = `${process.env.VITE_LMS_API}/h5p/content-user-data`;
         try {
             const response = await fetch(apiUrl, {
@@ -117,19 +105,16 @@ class LmsService {
                 body: JSON.stringify(data)
             });
             if (!response.ok) {
-                throw new Error(`Failed to post data: ${response.statusText}`);
+                console.error(`Failed to post data: ${response.statusText}`);
+                return null;
             }
         }
         catch (error) {
             console.error('Error in createOrUpdateContentUserData:', error);
-            throw error;
+            return null;
         }
     }
     async createOrUpdateContentScore(data) {
-        if (!process.env.VITE_LMS_API) {
-            throw new Error('VITE_LMS_API environment variable is not defined. Current working directory: ' +
-                process.cwd());
-        }
         const apiUrl = `${process.env.VITE_LMS_API}/h5p/content-score`;
         try {
             const response = await fetch(apiUrl, {
@@ -141,12 +126,42 @@ class LmsService {
                 body: JSON.stringify(data)
             });
             if (!response.ok) {
-                throw new Error(`Failed to post data: ${response.statusText}`);
+                console.error(`Failed to post data: ${response.statusText}`);
+                return null;
             }
         }
         catch (error) {
             console.error('Error in createOrUpdateContentUserData:', error);
-            throw error;
+            return null;
+        }
+    }
+
+    async getUserFromToken(token) {
+        const apiUrl = `${process.env.VITE_LMS_API}/profile`;
+        try {
+            const response = await fetch(apiUrl, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Token: token
+                }
+            });
+            if (!response.ok) {
+                console.log(`Failed to get data: ${response.statusText}`);
+                return null;
+            }
+
+            const result = await response.json();
+            const userData = {
+                id: result.id,
+                name: result.name,
+                email: result.email,
+            };
+            return userData;
+        }
+        catch (error) {
+            console.error('Error in createOrUpdateContentUserData:', error);
+            return null;
         }
     }
 }

@@ -93,12 +93,17 @@ export default function (
         '/new',
         async (req: IRequestWithLanguage & IRequestWithUser, res) => {
             console.log("get new content")
+            console.log(req.user)
+            const token = req.query.token as string;
+
+            const user = await contentService.getUserFromToken(token)
+
             const page = await h5pEditor.render(
                 undefined,
                 languageOverride === 'auto'
                     ? (req.language ?? 'en')
                     : languageOverride,
-                req.user
+                user
             );
             res.send(page);
             res.status(200).end();
