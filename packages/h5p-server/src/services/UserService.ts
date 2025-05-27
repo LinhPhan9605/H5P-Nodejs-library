@@ -1,27 +1,42 @@
 import { IUser } from '../types';
 
+const isBrowser = typeof window !== 'undefined';
+
 export class UserService {
     private static readonly USER_KEY = 'h5p_user';
 
     public static setUser(user: IUser): void {
-        if (typeof window !== 'undefined') {
-            localStorage.setItem(this.USER_KEY, JSON.stringify(user));
-        }
+        if (!isBrowser) {
+            console.log(typeof window)
+            console.log("not isBrowser")
+            return
+        };
+        localStorage.setItem(this.USER_KEY, JSON.stringify(user));
     }
 
     public static getUser(): IUser | null {
-        if (typeof window !== 'undefined') {
-            const userStr = localStorage.getItem(this.USER_KEY);
-            if (userStr) {
-                return JSON.parse(userStr);
-            }
+        if (!isBrowser) {
+            console.log(typeof window)
+            console.log("not isBrowser")
+            return
+        };
+        const userStr = localStorage.getItem(this.USER_KEY);
+        if (!userStr) return null;
+
+        try {
+            return JSON.parse(userStr) as IUser;
+        } catch (e) {
+            console.error('[UserService] Failed to parse user from localStorage:', e);
+            return null;
         }
-        return null;
     }
 
     public static clearUser(): void {
-        if (typeof window !== 'undefined') {
-            localStorage.removeItem(this.USER_KEY);
-        }
+        if (!isBrowser) {
+            console.log(typeof window)
+            console.log("not isBrowser")
+            return
+        };
+        localStorage.removeItem(this.USER_KEY);
     }
-} 
+}

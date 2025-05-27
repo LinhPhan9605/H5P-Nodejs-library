@@ -35,7 +35,7 @@ class LmsService {
                 body: JSON.stringify(body)
             });
             if (!response.ok) {
-                const errorMessage = `Failed to api: ${response.status} ${response.statusText}`;
+                const errorMessage = `Failed createOrUpdateContent to api: ${response.status} ${response.statusText}`;
                 console.error(errorMessage);
                 throw new Error(errorMessage);
             }
@@ -56,7 +56,7 @@ class LmsService {
             }
         });
         if (!response.ok) {
-                const errorMessage = `Failed to api: ${response.status} ${response.statusText}`;
+                const errorMessage = `Failed getContentUserData to api: ${response.status} ${response.statusText}`;
                 console.error(errorMessage);
                 throw new Error(errorMessage);
         }
@@ -84,7 +84,7 @@ class LmsService {
                 }
             });
             if (!response.ok) {
-                const errorMessage = `Failed to api: ${response.status} ${response.statusText}`;
+                const errorMessage = `Failed getContentUserDataByContentIdAndUser to api: ${response.status} ${response.statusText}`;
                 console.error(errorMessage);
                 throw new Error(errorMessage);
             }
@@ -96,6 +96,8 @@ class LmsService {
             throw new Error(error);
         }
     }
+
+
     async createOrUpdateContentUserData(data) {
         const apiUrl = `${process.env.VITE_LMS_API}/h5p/content-user-data`;
         try {
@@ -108,7 +110,7 @@ class LmsService {
                 body: JSON.stringify(data)
             });
             if (!response.ok) {
-                const errorMessage = `Failed to api: ${response.status} ${response.statusText}`;
+                const errorMessage = `Failed createOrUpdateContentUserData to api: ${response.status} ${response.statusText}`;
                 console.error(errorMessage);
                 throw new Error(errorMessage);
             }
@@ -130,7 +132,7 @@ class LmsService {
                 body: JSON.stringify(data)
             });
             if (!response.ok) {
-                const errorMessage = `Failed to api: ${response.status} ${response.statusText}`;
+                const errorMessage = `Failed createOrUpdateContentScore to api: ${response.status} ${response.statusText}`;
                 console.error(errorMessage);
                 throw new Error(errorMessage);
             }
@@ -152,24 +154,24 @@ class LmsService {
                 }
             });
             if (!response.ok) {
-                console.log(token)
-                console.log(`Failed to get data: ${response.statusText}`);
-                return {
-
-                };
+                const errorMessage = `Failed getUserFromToken to api: ${response.status} ${response.statusText}`;
+                console.error(errorMessage);
+                throw new Error(errorMessage);
             }
 
             const result = await response.json();
+
+            console.log(result)
             const userData = {
-                id: result.id,
-                name: result.name,
-                email: result.email,
+                id: result.data.id,
+                name: result.data.name,
+                email: result.data.email,
             };
             return userData;
         }
         catch (error) {
-            console.error('Error in createOrUpdateContentUserData:', error);
-            return null;
+            console.error('Error in getUserFromToken:', error);
+            throw new Error(error);
         }
     }
 }
