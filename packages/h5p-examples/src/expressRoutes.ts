@@ -153,7 +153,8 @@ export default function (
             const metadata = req.body.params.metadata || {};
             const params = req.body.params.params || {};
 
-            const user = await contentService.getUserFormStorage();
+            const token = req.query.token as string;
+            const user = await contentService.getUserFromToken(token)
 
             console.log("new content - user")
             console.log(user)
@@ -205,7 +206,8 @@ export default function (
                 contentId,
                 metadata.title || 'Untitled Content',
                 params,
-                extendedMetadata
+                extendedMetadata,
+                user
             );
 
             res.send(
@@ -213,7 +215,8 @@ export default function (
                     contentId,
                     status: 'success',
                     message: 'Content saved successfully',
-                    timestamp: now
+                    timestamp: now,
+                    token
                 })
             );
             res.status(200).end();

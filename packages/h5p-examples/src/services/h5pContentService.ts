@@ -7,14 +7,16 @@ export class H5PContentService {
         contentId: string,
         title: string,
         parameters: any,
-        metadata: any = {}
+        metadata: any = {},
+        user: IUser
     ): Promise<void> {
         const contentService = new LmsService();
         await contentService.createOrUpdateContent(
             contentId,
             title,
             parameters,
-            metadata
+            metadata,
+            user
         );
     }
 

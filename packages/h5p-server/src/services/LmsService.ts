@@ -2,6 +2,7 @@ import dotenv from 'dotenv';
 import path from 'path';
 
 import { UserService } from './UserService';
+import { IUser } from '../types';
 
 // Try loading from different possible locations
 const envPaths = [
@@ -40,12 +41,11 @@ export class LmsService {
         title: string,
         parameters: any,
         metadata: any = {},
+        user: IUser
     ): Promise<void> {
         const apiUrl = `${process.env.VITE_LMS_API}/h5p/content`;
 
         try {
-            const user = UserService.getUser();
-
             const response = await fetch(apiUrl, {
                 method: 'POST',
                 headers: {
@@ -85,7 +85,7 @@ export class LmsService {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                Token: user.token || ''
+                Token: process.env.VITE_LMS_API_TOKEN || ''
             }
         });
 
@@ -124,7 +124,7 @@ export class LmsService {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    Token: user.token || ''
+                    Token: process.env.VITE_LMS_API_TOKEN || ''
                 }
             });
 
@@ -154,7 +154,7 @@ export class LmsService {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    Token: user.token || ''
+                    Token: process.env.VITE_LMS_API_TOKEN || ''
                 },
                 body: JSON.stringify(data)
             });
@@ -179,7 +179,7 @@ export class LmsService {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    Token: user.token || ''
+                    Token: process.env.VITE_LMS_API_TOKEN || ''
                 },
                 body: JSON.stringify(data)
             });

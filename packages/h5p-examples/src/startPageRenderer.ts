@@ -22,7 +22,7 @@ export default function render(
             <script src="/require.js"></script>
             <link rel="stylesheet" href="/bootstrap.min.css">
             <link rel="stylesheet" href="/fontawesome-free/css/all.min.css">
-            <title>H5P NodeJs Demo</title>
+            <title>H5P Library</title>
         </head>
         <body>
             <div class="container">        
@@ -31,7 +31,7 @@ export default function render(
                 </h2>
                 <a class="btn btn-primary my-2" href="${
                     editor.config.baseUrl
-                }/new?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3Niwicm9sZV9pZCI6MSwiZXhwIjoxNzQ4ODMyODc5LCJuYmYiOjE3NDgyMjgwNzksImlhdCI6MTc0ODIyODA3OX0.G52xekyFj9Lvx3kq09Pfibzs0S-HiIhrxOFei0glhjk"><span class="fa fa-plus-circle m-2"></span>Create new content</a>
+                }/new?token=${req.user.token}"><span class="fa fa-plus-circle m-2"></span>Create new content</a>
                 <div class="list-group">
                 ${contentObjects
                     .map(
@@ -39,7 +39,7 @@ export default function render(
                             `<div class="list-group-item">
                                 <div class="d-flex w-10">
                                     <div class="me-auto p-2 align-self-center">
-                                        <a href="${editor.config.baseUrl}${editor.config.playUrl}/${content.id}">
+                                        <a href="${editor.config.baseUrl}${editor.config.playUrl}/${content.id}?token=${req.user.token}">
                                             <h5>${content.content.title}</h5>
                                         </a>
                                         <div class="small d-flex">                                            
