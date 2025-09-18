@@ -22,16 +22,18 @@ export default function render(
             <script src="/require.js"></script>
             <link rel="stylesheet" href="/bootstrap.min.css">
             <link rel="stylesheet" href="/fontawesome-free/css/all.min.css">
-            <title>H5P Library</title>
+            <title>H5P NodeJs Demo</title>
         </head>
         <body>
-            <div class="container">        
+            <div class="container">
+                <h1>H5P NodeJs Demo</h1>
+                <div class="alert alert-warning">This demo is for debugging and demonstration purposes only and not suitable for production use!</div>                
                 <h2>
                     <span class="fa fa-file"></span> Existing content
                 </h2>
                 <a class="btn btn-primary my-2" href="${
                     editor.config.baseUrl
-                }/new?token=${req.user.token}"><span class="fa fa-plus-circle m-2"></span>Create new content</a>
+                }/new"><span class="fa fa-plus-circle m-2"></span>Create new content</a>
                 <div class="list-group">
                 ${contentObjects
                     .map(
@@ -39,7 +41,7 @@ export default function render(
                             `<div class="list-group-item">
                                 <div class="d-flex w-10">
                                     <div class="me-auto p-2 align-self-center">
-                                        <a href="${editor.config.baseUrl}${editor.config.playUrl}/${content.id}?token=${req.user.token}">
+                                        <a href="${editor.config.baseUrl}${editor.config.playUrl}/${content.id}">
                                             <h5>${content.content.title}</h5>
                                         </a>
                                         <div class="small d-flex">                                            

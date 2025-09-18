@@ -92,23 +92,12 @@ export default function (
     router.get(
         '/new',
         async (req: IRequestWithLanguage & IRequestWithUser, res) => {
-
-            const token = req.query.token as string;
-
-            console.log("token")
-            console.log(token)
-
-            const user = await contentService.getUserFromToken(token)
-            
-            console.log("get new content")
-            console.log(user)
-
             const page = await h5pEditor.render(
                 undefined,
                 languageOverride === 'auto'
                     ? (req.language ?? 'en')
                     : languageOverride,
-                user
+                req.user
             );
             res.send(page);
             res.status(200).end();
@@ -153,12 +142,6 @@ export default function (
             const metadata = req.body.params.metadata || {};
             const params = req.body.params.params || {};
 
-            const token = req.query.token as string;
-            const user = await contentService.getUserFromToken(token)
-
-            console.log("new content - user")
-            console.log(user)
-
             const now = new Date().toISOString();
             const extendedMetadata = {
                 ...metadata,
@@ -173,7 +156,7 @@ export default function (
                     {
                         date: now,
                         type: 'create',
-                        userId: user.id || 'anonymous',
+                        userId: req.user.id || 'anonymous',
                         action: 'Content created'
                     }
                 ]
@@ -186,7 +169,7 @@ export default function (
                     params,
                     metadata,
                     req.body.library,
-                    user
+                    req.user
                 );
                 console.log(
                     'Successfully saved content to H5P system:',
@@ -206,8 +189,7 @@ export default function (
                 contentId,
                 metadata.title || 'Untitled Content',
                 params,
-                extendedMetadata,
-                user
+                extendedMetadata
             );
 
             res.send(
@@ -215,8 +197,7 @@ export default function (
                     contentId,
                     status: 'success',
                     message: 'Content saved successfully',
-                    timestamp: now,
-                    token
+                    timestamp: now
                 })
             );
             res.status(200).end();

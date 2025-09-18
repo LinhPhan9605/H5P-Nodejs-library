@@ -141,8 +141,7 @@ var ns = H5PEditor;
                       }).then((result) => {
                           const parsedResult = JSON.parse(result)
                           if(parsedResult.contentId) {
-                              const token = parsedResult.token
-                              window.location.href = '${model.urlGenerator.play()}/' + parsedResult.contentId + '?token=' + token;
+                              window.location.href = '${model.urlGenerator.play()}/' + parsedResult.contentId;
                           }
                       });
                     });

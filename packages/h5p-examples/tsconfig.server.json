@@ -1,10 +1,9 @@
 {
-  "extends": "../../tsconfig.build.json",
-  "include": ["src/**/*.ts"],
-  "exclude": ["src/client/**"],
-  "compilerOptions": {
-    "declaration": true,
-    "outDir": "./build",
-    "rootDir": "src"
-  }
+    "extends": "../../tsconfig.build.json",
+    "include": ["src/**/*.ts"],
+    "exclude": ["src/client/**"],
+    "compilerOptions": {
+        "declaration": true,
+        "outDir": "./build"
+    }
 }
